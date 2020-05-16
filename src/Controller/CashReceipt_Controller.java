@@ -7,7 +7,6 @@ package Controller;
 
 import Model.CashRegisterReceipts;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,21 +32,7 @@ public class CashReceipt_Controller {
         JOptionPane.showMessageDialog(null, "Cash Receipt registred!");
     }
 
-    public void loadCash(DefaultTableModel model) {
-//        String fila[] = {
-//            c.getNo() + "",
-//            c.getCity(),
-//            c.getDate(),
-//            c.getAddress(),
-//            c.getReceived(),
-//            c.getSum() + "",
-//            c.getConcept(),
-//            c.getCheck() + "",
-//            c.getBank(),
-//            c.getBranchOffice(),
-//            c.getCash() + "",
-//            c.getAddress()
-//        };
+    public Object loadCash() {
 
         Object[] o = new Object[11];
         o[0] = c.getNo();
@@ -61,8 +46,9 @@ public class CashReceipt_Controller {
         o[8] = c.getBank();
         o[9] = c.getBranchOffice();
         o[10] = c.getCash();
-        model.addRow(o);
-       // System.out.println(fila[5].toString());
+
+        return o;
+
     }
 
 }

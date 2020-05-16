@@ -5,12 +5,13 @@
  */
 package View;
 
-import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import javax.swing.table.DefaultTableModel;
 import Controller.CashReceipt_Controller;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,9 +19,9 @@ import javax.swing.JOptionPane;
  * @author daniel.rodriguez
  */
 public class CashReceipt extends javax.swing.JDialog {
-    
-     private DefaultTableModel modelCashReceipt;
-     CashReceipt_Controller crc = new CashReceipt_Controller();
+
+    //private DefaultTableModel modelCashReceipt;
+    CashReceipt_Controller crc = new CashReceipt_Controller();
 
     /**
      * Creates new form ReciboCaja
@@ -32,12 +33,9 @@ public class CashReceipt extends javax.swing.JDialog {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle d = env.getMaximumWindowBounds();
         this.setSize(d.width, d.height);
-        
-        modelCashReceipt = new DefaultTableModel();
+
         //TableCashReceipts.setModel(modelCashReceipt);
-        CashReceipt_Controller crc = new CashReceipt_Controller();
-        
-        
+        //CashReceipt_Controller crc = new CashReceipt_Controller();
     }
 
     /**
@@ -272,8 +270,18 @@ public class CashReceipt extends javax.swing.JDialog {
         });
 
         B_Clear.setText("Clear");
+        B_Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ClearActionPerformed(evt);
+            }
+        });
 
         B_clear.setText("Cancel");
+        B_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_clearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -341,7 +349,8 @@ public class CashReceipt extends javax.swing.JDialog {
         try {
             int no = Integer.parseInt(tF_No.getText().trim());
             String city = tF_City.getText().trim();
-            String date = jDate.getDateFormatString().trim();
+            DateFormat f = new SimpleDateFormat("dd-MM-yyyy");
+            String date = f.format(jDate.getDate());
             String address = tF_Address.getText().trim();
             String received = tF_Received.getText().trim();
             int sum = Integer.parseInt(tF_Sum.getText().trim());
@@ -351,13 +360,45 @@ public class CashReceipt extends javax.swing.JDialog {
             String branchOffice = tF_Branch.getText().trim();
             int cash = Integer.parseInt(tF_Cash.getText().trim());
             crc.CashRegisterReceipts(no, city, date, address, received, sum, concept, check, bank, branchOffice, cash);
-            crc.loadCash(modelCashReceipt);
-            
-          
+
+            DefaultTableModel modelCashReceipt = (DefaultTableModel) TableCashReceipts.getModel();
+            modelCashReceipt.addRow((Object[]) crc.loadCash());
+            TableCashReceipts.setModel(modelCashReceipt);
+
+            tF_No.setText(null);
+            tF_City.setText(null);
+            tF_Address.setText(null);
+            tF_Bank.setText(null);
+            tF_Branch.setText(null);
+            tF_Cash.setText(null);
+            tF_Check.setText(null);
+            tF_Concept.setText(null);
+            tF_Received.setText(null);
+            tF_Sum.setText(null);
+            jDate.setDate(null);
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }//GEN-LAST:event_B_SaveActionPerformed
+
+    private void B_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ClearActionPerformed
+        tF_No.setText(null);
+        tF_City.setText(null);
+        tF_Address.setText(null);
+        tF_Bank.setText(null);
+        tF_Branch.setText(null);
+        tF_Cash.setText(null);
+        tF_Check.setText(null);
+        tF_Concept.setText(null);
+        tF_Received.setText(null);
+        tF_Sum.setText(null);
+        jDate.setDate(null);
+    }//GEN-LAST:event_B_ClearActionPerformed
+
+    private void B_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_clearActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_B_clearActionPerformed
 
     /**
      * @param args the command line arguments

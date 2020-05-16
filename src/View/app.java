@@ -6,13 +6,6 @@
 package View;
 
 import Controller.EmployeeController;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
