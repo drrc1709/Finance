@@ -33,9 +33,6 @@ public class CashReceipt extends javax.swing.JDialog {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle d = env.getMaximumWindowBounds();
         this.setSize(d.width, d.height);
-
-        //TableCashReceipts.setModel(modelCashReceipt);
-        //CashReceipt_Controller crc = new CashReceipt_Controller();
     }
 
     /**
@@ -359,6 +356,7 @@ public class CashReceipt extends javax.swing.JDialog {
             String bank = tF_Bank.getText().trim();
             String branchOffice = tF_Branch.getText().trim();
             int cash = Integer.parseInt(tF_Cash.getText().trim());
+            
             crc.CashRegisterReceipts(no, city, date, address, received, sum, concept, check, bank, branchOffice, cash);
 
             DefaultTableModel modelCashReceipt = (DefaultTableModel) TableCashReceipts.getModel();
@@ -378,7 +376,7 @@ public class CashReceipt extends javax.swing.JDialog {
             jDate.setDate(null);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_B_SaveActionPerformed
 

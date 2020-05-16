@@ -34,8 +34,8 @@ public class app extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        B_recibosCaja = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        B_CashReceipts = new javax.swing.JButton();
+        B_DisbursementVoucher = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -49,15 +49,20 @@ public class app extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setName("Finance"); // NOI18N
 
-        B_recibosCaja.setText("CASH REGISTER RECEIPTS");
-        B_recibosCaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        B_recibosCaja.addActionListener(new java.awt.event.ActionListener() {
+        B_CashReceipts.setText("CASH REGISTER RECEIPTS");
+        B_CashReceipts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        B_CashReceipts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_recibosCajaActionPerformed(evt);
+                B_CashReceiptsActionPerformed(evt);
             }
         });
 
-        jButton2.setText("GRADUATION RECEIPTS");
+        B_DisbursementVoucher.setText("DISBURSEMENT VOUCHER");
+        B_DisbursementVoucher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_DisbursementVoucherActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("BANKS");
         jButton3.setPreferredSize(new java.awt.Dimension(121, 23));
@@ -79,7 +84,7 @@ public class app extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(B_recibosCaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(B_CashReceipts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -88,7 +93,7 @@ public class app extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(B_DisbursementVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(49, 49, 49)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -102,8 +107,8 @@ public class app extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(B_recibosCaja, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(B_CashReceipts, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(B_DisbursementVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -133,10 +138,15 @@ public class app extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void B_recibosCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_recibosCajaActionPerformed
+    private void B_CashReceiptsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CashReceiptsActionPerformed
         CashReceipt rc = new CashReceipt(this, rootPaneCheckingEnabled);
         rc.setVisible(true);
-    }//GEN-LAST:event_B_recibosCajaActionPerformed
+    }//GEN-LAST:event_B_CashReceiptsActionPerformed
+
+    private void B_DisbursementVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_DisbursementVoucherActionPerformed
+        DisbursementVoucher dc = new DisbursementVoucher(this, rootPaneCheckingEnabled);
+        dc.setVisible(true);
+    }//GEN-LAST:event_B_DisbursementVoucherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,8 +184,8 @@ public class app extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B_recibosCaja;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton B_CashReceipts;
+    private javax.swing.JButton B_DisbursementVoucher;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
