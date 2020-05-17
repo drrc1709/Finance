@@ -5,15 +5,11 @@
  */
 package View;
 
-import Controller.EmployeeController;
-
 /**
  *
  * @author daniel.rodriguez
  */
 public class app extends javax.swing.JFrame {
-    
-    private EmployeeController ec = new EmployeeController();
 
     /**
      * Creates new form app
@@ -213,10 +209,8 @@ public class app extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new app().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new app().setVisible(true);
         });
     }
 

@@ -24,7 +24,8 @@ public class Account extends javax.swing.JDialog {
         initComponents();
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle d = env.getMaximumWindowBounds();
-        this.setSize(d.width, d.height);
+        this.setSize(d.width/2, d.height/2);
+        this.setLocationRelativeTo(null);
     }
 
     /**
