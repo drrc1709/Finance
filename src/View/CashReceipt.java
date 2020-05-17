@@ -7,12 +7,14 @@ package View;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import javax.swing.table.DefaultTableModel;
 import Controller.CashReceipt_Controller;
+import Utilities.CellRenderer;
+import Utilities.HeaderRenderer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -20,7 +22,6 @@ import javax.swing.JOptionPane;
  */
 public class CashReceipt extends javax.swing.JDialog {
 
-    //private DefaultTableModel modelCashReceipt;
     CashReceipt_Controller crc = new CashReceipt_Controller();
 
     /**
@@ -29,10 +30,17 @@ public class CashReceipt extends javax.swing.JDialog {
     public CashReceipt(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Toolkit.getDefaultToolkit().getScreenSize();
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle d = env.getMaximumWindowBounds();
         this.setSize(d.width, d.height);
+
+        JTableHeader h = TableCashReceipts.getTableHeader();
+        h.setDefaultRenderer(new HeaderRenderer());
+        TableCashReceipts.setTableHeader(h);
+        
+        for (int i = 0; i < TableCashReceipts.getColumnCount(); i++) {
+            TableCashReceipts.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
+        }          
     }
 
     /**
@@ -101,6 +109,11 @@ public class CashReceipt extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        TableCashReceipts.setFillsViewportHeight(true);
+        TableCashReceipts.setFocusCycleRoot(true);
+        TableCashReceipts.setFocusTraversalPolicyProvider(true);
+        TableCashReceipts.setSurrendersFocusOnKeystroke(true);
+        TableCashReceipts.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TableCashReceipts);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Register"));
@@ -356,7 +369,7 @@ public class CashReceipt extends javax.swing.JDialog {
             String bank = tF_Bank.getText().trim();
             String branchOffice = tF_Branch.getText().trim();
             int cash = Integer.parseInt(tF_Cash.getText().trim());
-            
+
             crc.CashRegisterReceipts(no, city, date, address, received, sum, concept, check, bank, branchOffice, cash);
 
             DefaultTableModel modelCashReceipt = (DefaultTableModel) TableCashReceipts.getModel();

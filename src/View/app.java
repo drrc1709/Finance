@@ -36,14 +36,14 @@ public class app extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         B_CashReceipts = new javax.swing.JButton();
         B_DisbursementVoucher = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        B_Bank = new javax.swing.JButton();
+        B_Customers = new javax.swing.JButton();
+        B_Account = new javax.swing.JButton();
+        B_Providers = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Finance");
+        setTitle("FINANCE");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -64,41 +64,58 @@ public class app extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("BANKS");
-        jButton3.setPreferredSize(new java.awt.Dimension(121, 23));
+        B_Bank.setText("BANKS");
+        B_Bank.setPreferredSize(new java.awt.Dimension(121, 23));
+        B_Bank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_BankActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("CUSTOMERS");
+        B_Customers.setText("CUSTOMERS");
+        B_Customers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_CustomersActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("ACCOUNT");
+        B_Account.setText("ACCOUNT");
+        B_Account.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_AccountActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("PROVIDERS");
+        B_Providers.setText("PROVIDERS");
+        B_Providers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_ProvidersActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("FINANCE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_Bank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(B_CashReceipts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(B_DisbursementVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                        .addGap(15, 15, 15))))
+                    .addComponent(B_Customers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_DisbursementVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(B_Providers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_Account, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,12 +126,12 @@ public class app extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B_CashReceipts, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                     .addComponent(B_DisbursementVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
+                    .addComponent(B_Account, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
+                    .addComponent(B_Bank, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(B_Customers, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(B_Providers, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
 
@@ -147,6 +164,26 @@ public class app extends javax.swing.JFrame {
         DisbursementVoucher dc = new DisbursementVoucher(this, rootPaneCheckingEnabled);
         dc.setVisible(true);
     }//GEN-LAST:event_B_DisbursementVoucherActionPerformed
+
+    private void B_AccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AccountActionPerformed
+        Account a = new Account(this, rootPaneCheckingEnabled);
+        a.setVisible(true);
+    }//GEN-LAST:event_B_AccountActionPerformed
+
+    private void B_BankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_BankActionPerformed
+        Bank b = new Bank(this, rootPaneCheckingEnabled);
+        b.setVisible(true);
+    }//GEN-LAST:event_B_BankActionPerformed
+
+    private void B_CustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CustomersActionPerformed
+        Customers c = new Customers(this, rootPaneCheckingEnabled);
+        c.setVisible(true);
+    }//GEN-LAST:event_B_CustomersActionPerformed
+
+    private void B_ProvidersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ProvidersActionPerformed
+        Providers p = new Providers(this, rootPaneCheckingEnabled);
+        p.setVisible(true);
+    }//GEN-LAST:event_B_ProvidersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,12 +221,12 @@ public class app extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_Account;
+    private javax.swing.JButton B_Bank;
     private javax.swing.JButton B_CashReceipts;
+    private javax.swing.JButton B_Customers;
     private javax.swing.JButton B_DisbursementVoucher;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton B_Providers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
