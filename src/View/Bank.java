@@ -8,6 +8,7 @@ package View;
 import Controller.Banks_Controller;
 import Utilities.CellRenderer;
 import Utilities.HeaderRenderer;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
@@ -245,7 +246,7 @@ public class Bank extends javax.swing.JDialog {
     }//GEN-LAST:event_B_ClearActionPerformed
 
     private void B_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SaveActionPerformed
-        
+        try {
         Banks_Controller bc = new Banks_Controller();
         
         int id = Integer.parseInt(tF_Id.getText());
@@ -265,6 +266,9 @@ public class Bank extends javax.swing.JDialog {
         tF_Name.setText(null);
         tF_Number.setText(null);
         bGroup.clearSelection();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_B_SaveActionPerformed
 
