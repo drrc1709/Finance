@@ -5,7 +5,7 @@
  */
 package control;
 
-import modelo.PettyCashVoucher;
+import model.PettyCashVoucher;
 import javax.swing.JOptionPane;
 
 /**

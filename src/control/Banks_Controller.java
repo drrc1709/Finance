@@ -5,7 +5,7 @@
  */
 package control;
 
-import modelo.Bank;
+import model.Bank;
 import javax.swing.JOptionPane;
 
 /**

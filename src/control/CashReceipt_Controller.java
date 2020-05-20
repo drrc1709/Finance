@@ -5,7 +5,7 @@
  */
 package control;
 
-import modelo.CashRegisterReceipt;
+import model.CashRegisterReceipt;
 import javax.swing.JOptionPane;
 
 /**

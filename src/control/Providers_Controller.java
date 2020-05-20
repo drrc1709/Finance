@@ -5,7 +5,7 @@
  */
 package control;
 
-import modelo.Provider;
+import model.Provider;
 import javax.swing.JOptionPane;
 
 /**

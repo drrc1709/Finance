@@ -5,7 +5,7 @@
  */
 package control;
 
-import modelo.Customer;
+import model.Customer;
 import javax.swing.JOptionPane;
 
 /**
