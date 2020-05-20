@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package vista;
 
-import Controller.Providers_Controller;
-import Utilities.CellRenderer;
-import Utilities.HeaderRenderer;
+import control.Customers_Controller;
+import utils.CellRenderer;
+import utils.HeaderRenderer;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -16,25 +16,25 @@ import javax.swing.table.JTableHeader;
  *
  * @author Daniel
  */
-public class Providers extends javax.swing.JDialog {
+public class Customers extends javax.swing.JDialog {
 
     /**
-     * Creates new form Providers
+     * Creates new form Customers
      *
      * @param parent
      * @param modal
      */
-    public Providers(java.awt.Frame parent, boolean modal) {
+    public Customers(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
 
-        JTableHeader h = T_Providers.getTableHeader();
+        JTableHeader h = T_Customers.getTableHeader();
         h.setDefaultRenderer(new HeaderRenderer());
-        T_Providers.setTableHeader(h);
+        T_Customers.setTableHeader(h);
 
-        for (int i = 0; i < T_Providers.getColumnCount(); i++) {
-            T_Providers.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
+        for (int i = 0; i < T_Customers.getColumnCount(); i++) {
+            T_Customers.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
         }
     }
 
@@ -55,28 +55,26 @@ public class Providers extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         tF_Name = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        tF_Address = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         tF_Phone = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        tF_Address = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tF_City = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         tF_Mail = new javax.swing.JTextField();
         B_Save = new javax.swing.JButton();
         B_Clear = new javax.swing.JButton();
         B_Cancel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        T_Providers = new javax.swing.JTable();
+        T_Customers = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("PROVIDERS");
+        setTitle("CUSTOMERS");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("PROVIDERS");
+        jLabel1.setText("CUSTOMERS");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Register"));
 
@@ -84,13 +82,11 @@ public class Providers extends javax.swing.JDialog {
 
         jLabel3.setText("Name");
 
-        jLabel4.setText("Address");
+        jLabel4.setText("Phone");
 
-        jLabel5.setText("Phone");
+        jLabel5.setText("Address");
 
-        jLabel6.setText("City");
-
-        jLabel7.setText("Mail");
+        jLabel6.setText("Mail");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,32 +94,29 @@ public class Providers extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
+                        .addComponent(tF_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(2, 2, 2)
+                        .addComponent(tF_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_Address, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                        .addComponent(tF_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tF_Address, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_City, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tF_Mail)))
-                .addContainerGap())
+                        .addComponent(tF_Mail)
+                        .addGap(57, 57, 57))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,16 +128,14 @@ public class Providers extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(tF_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(tF_Address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                    .addComponent(tF_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(tF_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tF_Address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(tF_City, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
                     .addComponent(tF_Mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         B_Save.setText("Save");
@@ -168,49 +159,50 @@ public class Providers extends javax.swing.JDialog {
             }
         });
 
-        T_Providers.setModel(new javax.swing.table.DefaultTableModel(
+        T_Customers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Name", "Address", "Phone", "City", "Mail"
+                "Id", "Name", "Phone", "Address", "Mail"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        T_Providers.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(T_Providers);
+        T_Customers.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(T_Customers);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(B_Save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(45, 45, 45)
-                .addComponent(B_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(39, 39, 39)
-                .addComponent(B_Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(183, 183, 183))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))))
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(168, 168, 168)
+                .addComponent(B_Save)
+                .addGap(18, 18, 18)
+                .addComponent(B_Clear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(B_Cancel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +228,7 @@ public class Providers extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(11, 11, 11))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,20 +245,18 @@ public class Providers extends javax.swing.JDialog {
         try {
             int id = Integer.parseInt(tF_Id.getText());
             String name = tF_Name.getText();
-            String address = tF_Address.getText();
             int phone = Integer.parseInt(tF_Phone.getText());
-            String city = tF_City.getText();
+            String address = tF_Address.getText();
             String mail = tF_Mail.getText();
 
-            Providers_Controller pc = new Providers_Controller();
-            pc.RegisterProviders(id, name, address, phone, city, mail);
+            Customers_Controller cc = new Customers_Controller();
+            cc.RegisterCustomers(id, name, phone, address, mail);
 
-            DefaultTableModel mProvider = (DefaultTableModel) T_Providers.getModel();
-            mProvider.addRow((Object[]) pc.loadProvider());
-            T_Providers.setModel(mProvider);
+            DefaultTableModel mCustomer = (DefaultTableModel) T_Customers.getModel();
+            mCustomer.addRow((Object[]) cc.loadCustomers());
+            T_Customers.setModel(mCustomer);
 
             tF_Address.setText(null);
-            tF_City.setText(null);
             tF_Id.setText(null);
             tF_Mail.setText(null);
             tF_Name.setText(null);
@@ -276,18 +266,17 @@ public class Providers extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_B_SaveActionPerformed
 
-    private void B_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CancelActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_B_CancelActionPerformed
-
     private void B_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ClearActionPerformed
         tF_Address.setText(null);
-        tF_City.setText(null);
         tF_Id.setText(null);
         tF_Mail.setText(null);
         tF_Name.setText(null);
         tF_Phone.setText(null);
     }//GEN-LAST:event_B_ClearActionPerformed
+
+    private void B_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CancelActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_B_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,28 +295,26 @@ public class Providers extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Providers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Providers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Providers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Providers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Customers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Providers dialog = new Providers(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            Customers dialog = new Customers(new javax.swing.JFrame(), true);
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 
@@ -335,19 +322,17 @@ public class Providers extends javax.swing.JDialog {
     private javax.swing.JButton B_Cancel;
     private javax.swing.JButton B_Clear;
     private javax.swing.JButton B_Save;
-    private javax.swing.JTable T_Providers;
+    private javax.swing.JTable T_Customers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField tF_Address;
-    private javax.swing.JTextField tF_City;
     private javax.swing.JTextField tF_Id;
     private javax.swing.JTextField tF_Mail;
     private javax.swing.JTextField tF_Name;

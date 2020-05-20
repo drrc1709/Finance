@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package control;
 
-import Model.CashRegisterReceipts;
+import modelo.CashRegisterReceipt;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class CashReceipt_Controller {
 
-    private CashRegisterReceipts c = new CashRegisterReceipts();
+    private CashRegisterReceipt c = new CashRegisterReceipt();
 
     public void CashRegisterReceipts(int no, String city, String date, String address, String received, int sum, String concept, int check,
             String bank, String branchOffice, int cash) {

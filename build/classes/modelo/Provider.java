@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package modelo;
 
 /**
  *
  * @author Daniel
  */
-public class Providers {
+public class Provider {
     private int id;
     private String name;
     private String address;
-    private int phone;
-    private String city;
-    private String mail;
+    private long phoneNumber;
+    private String manager;
+    private String email;
 
     public int getId() {
         return id;
@@ -41,27 +41,27 @@ public class Providers {
         this.address = address;
     }
 
-    public int getPhone() {
-        return phone;
+    public long getPhone() {
+        return phoneNumber;
     }
 
     public void setPhone(int phone) {
-        this.phone = phone;
+        this.phoneNumber = phone;
     }
 
     public String getCity() {
-        return city;
+        return manager;
     }
 
     public void setCity(String city) {
-        this.city = city;
+        this.manager = city;
     }
 
-    public String getMail() {
-        return mail;
+    public String geteMail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void seteMail(String mail) {
+        this.email = mail;
     }
 }

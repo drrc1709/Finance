@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package vista;
 
-import Controller.DisbursementVoucher_Controller;
-import Utilities.CellRenderer;
-import Utilities.HeaderRenderer;
+import control.DisbursementVoucher_Controller;
+import utils.CellRenderer;
+import utils.HeaderRenderer;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.Toolkit;

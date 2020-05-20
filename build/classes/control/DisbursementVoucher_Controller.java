@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package control;
 
-import Model.DisbursementVoucher;
+import modelo.PettyCashVoucher;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class DisbursementVoucher_Controller {
 
-    private DisbursementVoucher dv = new DisbursementVoucher();
+    private PettyCashVoucher dv = new PettyCashVoucher();
 
     public void Register_DisbursementVoucher(String bank, String branch, int cash, int check, int code, String concept, String debit, int no, int value, String date) {
         dv.setBank(bank);

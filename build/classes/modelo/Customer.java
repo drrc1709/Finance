@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package modelo;
 
 /**
  *
  * @author Daniel
  */
-public class Banks {
-
+public class Customer {
     private int id;
     private String name;
-    private int number;
-    private String accounts;
+    private int phone;
+    private String address;
+    private String email;
+    private String type;
 
     public int getId() {
         return id;
@@ -32,20 +33,30 @@ public class Banks {
         this.name = name;
     }
 
-    public int getNumber() {
-        return number;
+    public int getPhone() {
+        return phone;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 
-    public String getAccounts() {
-        return accounts;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAccounts(String accounts) {
-        this.accounts = accounts;
+    public void setAddress(String address) {
+        this.address = address;
     }
+
+    public String getMail() {
+        return email;
+    }
+
+    public void setMail(String mail) {
+        this.email = mail;
+    }
+    
+    
     
 }

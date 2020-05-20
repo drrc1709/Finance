@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package control;
 
-import Model.Banks;
+import modelo.Bank;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class Banks_Controller {
 
-    private Banks b = new Banks();
+    private Bank b = new Bank();
 
     public void BanksRegister(int id, String name, int number, String account) {
         b.setId(id);

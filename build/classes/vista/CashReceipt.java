@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package vista;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import javax.swing.table.DefaultTableModel;
-import Controller.CashReceipt_Controller;
-import Utilities.CellRenderer;
-import Utilities.HeaderRenderer;
+import control.CashReceipt_Controller;
+import utils.CellRenderer;
+import utils.HeaderRenderer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -82,7 +82,7 @@ public class CashReceipt extends javax.swing.JDialog {
         tF_Cash = new javax.swing.JTextField();
         B_Save = new javax.swing.JButton();
         B_Clear = new javax.swing.JButton();
-        B_clear = new javax.swing.JButton();
+        B_Cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CASH RECEIPT");
@@ -286,10 +286,10 @@ public class CashReceipt extends javax.swing.JDialog {
             }
         });
 
-        B_clear.setText("Cancel");
-        B_clear.addActionListener(new java.awt.event.ActionListener() {
+        B_Cancel.setText("Cancel");
+        B_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_clearActionPerformed(evt);
+                B_CancelActionPerformed(evt);
             }
         });
 
@@ -315,7 +315,7 @@ public class CashReceipt extends javax.swing.JDialog {
                 .addGap(67, 67, 67)
                 .addComponent(B_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(80, 80, 80)
-                .addComponent(B_clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(B_Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(358, 358, 358))
         );
         jPanel1Layout.setVerticalGroup(
@@ -329,7 +329,7 @@ public class CashReceipt extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(B_Save)
                     .addComponent(B_Clear)
-                    .addComponent(B_clear))
+                    .addComponent(B_Cancel))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                 .addContainerGap())
@@ -407,9 +407,9 @@ public class CashReceipt extends javax.swing.JDialog {
         jDate.setDate(null);
     }//GEN-LAST:event_B_ClearActionPerformed
 
-    private void B_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_clearActionPerformed
+    private void B_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CancelActionPerformed
         this.dispose();
-    }//GEN-LAST:event_B_clearActionPerformed
+    }//GEN-LAST:event_B_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,9 +455,9 @@ public class CashReceipt extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_Cancel;
     private javax.swing.JButton B_Clear;
     private javax.swing.JButton B_Save;
-    private javax.swing.JButton B_clear;
     private javax.swing.JTable TableCashReceipts;
     private com.toedter.calendar.JDateChooser jDate;
     private javax.swing.JLabel jLabel1;

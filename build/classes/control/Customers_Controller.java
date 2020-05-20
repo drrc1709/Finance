@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package control;
 
-import Model.Customers;
+import modelo.Customer;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author Daniel
  */
 public class Customers_Controller {
-    private Customers c = new Customers();
+    private Customer c = new Customer();
     
     public void RegisterCustomers(int id, String name, int phone, String address, String mail){
         c.setId(id);
