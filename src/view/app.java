@@ -5,19 +5,31 @@
  */
 package view;
 
+import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
+import utils.explode;
+
 /**
  *
- * @author daniel.rodriguez
+ * @author Daniel
  */
 public class app extends javax.swing.JFrame {
+
+    private final CashReceiptPanel crp = new CashReceiptPanel();
+    private final PettyCashPanel pcp = new PettyCashPanel();
+    private final AccountPanel ap = new AccountPanel();
+    private final BankPanel bp = new BankPanel();
+    private final CustomersPanel cp = new CustomersPanel();
+    private final ProvidersPanel pp = new ProvidersPanel();
+    private final appPanel appp = new appPanel();
 
     /**
      * Creates new form app
      */
     public app() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        new explode(appPl, appp).play();
     }
 
     /**
@@ -29,107 +41,98 @@ public class app extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        B_CashReceipts = new javax.swing.JButton();
-        B_DisbursementVoucher = new javax.swing.JButton();
-        B_Bank = new javax.swing.JButton();
-        B_Customers = new javax.swing.JButton();
-        B_Account = new javax.swing.JButton();
-        B_Providers = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        appPl = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        MStart = new javax.swing.JMenu();
+        MChash = new javax.swing.JMenu();
+        MPetty = new javax.swing.JMenu();
+        MAccount = new javax.swing.JMenu();
+        MBank = new javax.swing.JMenu();
+        MCustomers = new javax.swing.JMenu();
+        MProviders = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FINANCE");
-        setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setName("Finance"); // NOI18N
+        appPl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        B_CashReceipts.setText("CASH REGISTER RECEIPTS");
-        B_CashReceipts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        B_CashReceipts.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_CashReceiptsActionPerformed(evt);
-            }
-        });
-
-        B_DisbursementVoucher.setText("DISBURSEMENT VOUCHER");
-        B_DisbursementVoucher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_DisbursementVoucherActionPerformed(evt);
-            }
-        });
-
-        B_Bank.setText("BANKS");
-        B_Bank.setPreferredSize(new java.awt.Dimension(121, 23));
-        B_Bank.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_BankActionPerformed(evt);
-            }
-        });
-
-        B_Customers.setText("CUSTOMERS");
-        B_Customers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_CustomersActionPerformed(evt);
-            }
-        });
-
-        B_Account.setText("ACCOUNT");
-        B_Account.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_AccountActionPerformed(evt);
-            }
-        });
-
-        B_Providers.setText("PROVIDERS");
-        B_Providers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_ProvidersActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("FINANCE");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(B_Bank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(B_CashReceipts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(B_Customers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(B_DisbursementVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(B_Providers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(B_Account, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                .addGap(15, 15, 15))
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout appPlLayout = new javax.swing.GroupLayout(appPl);
+        appPl.setLayout(appPlLayout);
+        appPlLayout.setHorizontalGroup(
+            appPlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 376, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(B_CashReceipts, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(B_DisbursementVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(B_Account, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(B_Bank, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(B_Customers, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(B_Providers, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
-                .addGap(25, 25, 25))
+        appPlLayout.setVerticalGroup(
+            appPlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 253, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        MStart.setText("Start");
+        MStart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MStart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MStartMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(MStart);
+
+        MChash.setText("Cash Receipt");
+        MChash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MChash.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MChashMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(MChash);
+
+        MPetty.setText("Petty Cash");
+        MPetty.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MPetty.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MPettyMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(MPetty);
+
+        MAccount.setText("Account");
+        MAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MAccountMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(MAccount);
+
+        MBank.setText("Bank");
+        MBank.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MBank.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MBankMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(MBank);
+
+        MCustomers.setText("Customers");
+        MCustomers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MCustomersMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(MCustomers);
+
+        MProviders.setText("Providers");
+        MProviders.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MProviders.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MProvidersMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(MProviders);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,49 +140,61 @@ public class app extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(appPl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(appPl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void B_CashReceiptsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CashReceiptsActionPerformed
-        CashReceipt rc = new CashReceipt(this, rootPaneCheckingEnabled);
-        rc.setVisible(true);
-    }//GEN-LAST:event_B_CashReceiptsActionPerformed
+    private void MChashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MChashMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new explode(appPl, crp).play();
+        }
+    }//GEN-LAST:event_MChashMouseClicked
 
-    private void B_DisbursementVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_DisbursementVoucherActionPerformed
-        DisbursementVoucher dc = new DisbursementVoucher(this, rootPaneCheckingEnabled);
-        dc.setVisible(true);
-    }//GEN-LAST:event_B_DisbursementVoucherActionPerformed
+    private void MPettyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MPettyMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new explode(appPl, pcp).play();
+        }
+    }//GEN-LAST:event_MPettyMouseClicked
 
-    private void B_AccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AccountActionPerformed
-        Account a = new Account(this, rootPaneCheckingEnabled);
-        a.setVisible(true);
-    }//GEN-LAST:event_B_AccountActionPerformed
+    private void MAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MAccountMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new explode(appPl, ap).play();
+        }
+    }//GEN-LAST:event_MAccountMouseClicked
 
-    private void B_BankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_BankActionPerformed
-        Bank b = new Bank(this, rootPaneCheckingEnabled);
-        b.setVisible(true);
-    }//GEN-LAST:event_B_BankActionPerformed
+    private void MBankMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MBankMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new explode(appPl, bp).play();
+        }
+    }//GEN-LAST:event_MBankMouseClicked
 
-    private void B_CustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CustomersActionPerformed
-        Customers c = new Customers(this, rootPaneCheckingEnabled);
-        c.setVisible(true);
-    }//GEN-LAST:event_B_CustomersActionPerformed
+    private void MCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MCustomersMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new explode(appPl, cp).play();
+        }
+    }//GEN-LAST:event_MCustomersMouseClicked
 
-    private void B_ProvidersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ProvidersActionPerformed
-        Providers p = new Providers(this, rootPaneCheckingEnabled);
-        p.setVisible(true);
-    }//GEN-LAST:event_B_ProvidersActionPerformed
+    private void MProvidersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MProvidersMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new explode(appPl, pp).play();
+        }
+    }//GEN-LAST:event_MProvidersMouseClicked
+
+    private void MStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MStartMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            new explode(appPl, appp).play();
+        }
+    }//GEN-LAST:event_MStartMouseClicked
 
     /**
      * @param args the command line arguments
@@ -209,20 +224,22 @@ public class app extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new app().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new app().setVisible(true);
+            }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B_Account;
-    private javax.swing.JButton B_Bank;
-    private javax.swing.JButton B_CashReceipts;
-    private javax.swing.JButton B_Customers;
-    private javax.swing.JButton B_DisbursementVoucher;
-    private javax.swing.JButton B_Providers;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu MAccount;
+    private javax.swing.JMenu MBank;
+    private javax.swing.JMenu MChash;
+    private javax.swing.JMenu MCustomers;
+    private javax.swing.JMenu MPetty;
+    private javax.swing.JMenu MProviders;
+    private javax.swing.JMenu MStart;
+    private javax.swing.JPanel appPl;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
-
 }

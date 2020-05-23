@@ -13,29 +13,29 @@ import javax.swing.JOptionPane;
  * @author Daniel
  */
 public class Providers_Controller {
-    private Provider p = new Provider();
-    
-    public void RegisterProviders(int id, String name, String address, int phone, String city, String mail){
-        p.setId(id);
-        p.setName(name);
-        p.setAddress(address);
-        p.setPhone(phone);
-        p.setCity(city);
-        p.setMail(mail);
-        
-        JOptionPane.showMessageDialog(null, "Provider Regisred!", "Registred", JOptionPane.INFORMATION_MESSAGE);
-    }
-    
-    public Object loadProvider(){
-        
-        Object[] o = new Object[6];
-        o[0] = p.getId();
-        o[1] = p.getName();
-        o[2] = p.getAddress();
-        o[3] = p.getPhone();
-        o[4] = p.getCity();
-        o[5] = p.getMail();
-        
-        return o;
-    }
+//    private Provider p = new Provider();
+//    
+//    public void RegisterProviders(int id, String name, String address, int phone, String city, String mail){
+//        p.setId(id);
+//        p.setName(name);
+//        p.setAddress(address);
+//        p.setPhone(phone);
+//        p.setCity(city);
+//        p.setMail(mail);
+//        
+//        JOptionPane.showMessageDialog(null, "Provider Regisred!", "Registred", JOptionPane.INFORMATION_MESSAGE);
+//    }
+//    
+//    public Object loadProvider(){
+//        
+//        Object[] o = new Object[6];
+//        o[0] = p.getId();
+//        o[1] = p.getName();
+//        o[2] = p.getAddress();
+//        o[3] = p.getPhone();
+//        o[4] = p.getCity();
+//        o[5] = p.getMail();
+//        
+//        return o;
+//    }
 }

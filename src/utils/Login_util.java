@@ -13,6 +13,5 @@ public class Login_util {
     
     public static final String USER = "admin";
     public static final String PASSWORD = "fus1234";
-    public final static int TWO_SECOND = 2;
-    
+
 }
