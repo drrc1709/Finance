@@ -18,14 +18,7 @@ public class Bank {
     private String address;
     private String webSite;
 
-    public Bank() {
-        id=0;
-        name="no name";
-        phoneNumber=0;
-        manager="John Doe";
-        address="no addres";
-        webSite="www.bank.com";
-        
+    public Bank() {        
     }
 
     public Bank(int id, String name, long number, String manager, String address, String webSite) {

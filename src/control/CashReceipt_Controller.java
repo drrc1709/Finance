@@ -5,8 +5,12 @@
  */
 package control;
 
+import java.util.Date;
 import model.CashRegisterReceipt;
 import javax.swing.JOptionPane;
+import model.Customer;
+import model.Account;
+import utils.paneColor;
 
 /**
  *
@@ -14,30 +18,31 @@ import javax.swing.JOptionPane;
  */
 public class CashReceipt_Controller {
 
-    private CashRegisterReceipt c = new CashRegisterReceipt();
+    private CashRegisterReceipt crc = new CashRegisterReceipt();
+    private paneColor pc = new paneColor();
 
-//    public void CashRegisterReceipts(int idReceipt,Date date,Customer c,Account a,long value,String concept) {
-//        
-//        JOptionPane.showMessageDialog(null, "Cash Receipt registred!");
-//    }
-//
-//    public Object loadCash() {
-//
-//        Object[] o = new Object[11];
-//        o[0] = c.getNo();
-//        o[1] = c.getCity();
-//        o[2] = c.getDate();
-//        o[3] = c.getAddress();
-//        o[4] = c.getReceived();
-//        o[5] = c.getSum();
-//        o[6] = c.getConcept();
-//        o[7] = c.getCheck();
-//        o[8] = c.getBank();
-//        o[9] = c.getBranchOffice();
-//        o[10] = c.getCash();
-//
-//        return o;
-//
-//    }
+    public void CashRegisterReceipts(int idReceipt, Date date, Customer c, Account a, long value, String concept) {
+        crc.setIdReceipt(idReceipt);
+        crc.setDate(date);
+        crc.setC(c);
+        crc.setA(a);
+        crc.setValue(value);
+        crc.setConcept(concept);
+        
+        pc.getPanel(null, "Cash Receipt registred!", "Registred", JOptionPane.INFORMATION_MESSAGE);
+    }       
+
+    public Object loadCash() {
+
+        Object[] o = new Object[6];
+        o[0] = crc.getIdReceipt();
+        o[1] = crc.getDate();
+        o[2] = crc.getC().getName();
+        o[3] = crc.getA().getOwner();
+        o[4] = crc.getValue();
+        o[5] = crc.getConcept();
+        
+        return o;
+    }
 
 }

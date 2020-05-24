@@ -7,35 +7,37 @@ package control;
 
 import model.Provider;
 import javax.swing.JOptionPane;
+import utils.paneColor;
 
 /**
  *
  * @author Daniel
  */
 public class Providers_Controller {
-//    private Provider p = new Provider();
-//    
-//    public void RegisterProviders(int id, String name, String address, int phone, String city, String mail){
-//        p.setId(id);
-//        p.setName(name);
-//        p.setAddress(address);
-//        p.setPhone(phone);
-//        p.setCity(city);
-//        p.setMail(mail);
-//        
-//        JOptionPane.showMessageDialog(null, "Provider Regisred!", "Registred", JOptionPane.INFORMATION_MESSAGE);
-//    }
-//    
-//    public Object loadProvider(){
-//        
-//        Object[] o = new Object[6];
-//        o[0] = p.getId();
-//        o[1] = p.getName();
-//        o[2] = p.getAddress();
-//        o[3] = p.getPhone();
-//        o[4] = p.getCity();
-//        o[5] = p.getMail();
-//        
-//        return o;
-//    }
+    private final Provider p = new Provider();
+    private final paneColor pc = new paneColor();
+    
+    public void RegisterProviders(int id, String name, String address, long phoneNumber, String manager, String email){
+        p.setId(id);
+        p.setName(name);
+        p.setAddress(address);
+        p.setPhoneNumber(phoneNumber);
+        p.setManager(manager);
+        p.setEmail(email);
+        
+        pc.getPanel(null, "Provider Regisred!", "Registred", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public Object loadProvider(){
+        
+        Object[] o = new Object[6];
+        o[0] = p.getId();
+        o[1] = p.getName();
+        o[2] = p.getAddress();
+        o[3] = p.getPhoneNumber();
+        o[4] = p.getManager();
+        o[5] = p.getEmail();
+        
+        return o;
+    }
 }

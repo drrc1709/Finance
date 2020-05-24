@@ -5,19 +5,29 @@
  */
 package view;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
+import control.CashReceipt_Controller;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import model.Account;
+import model.Customer;
 import utils.CellRenderer;
 import utils.HeaderRenderer;
+import utils.explode;
+import utils.paneColor;
 
 /**
  *
  * @author Daniel
  */
 public class CashReceiptPanel extends javax.swing.JPanel {
+    private final CashReceipt_Controller crcc = new CashReceipt_Controller();
+    private final Account a = new Account();
+    private final Customer c = new Customer();
+    private final paneColor pc = new paneColor();
+    private final appPanel appp = new appPanel();
 
     /**
      * Creates new form CashReceiptPanel
@@ -47,49 +57,42 @@ public class CashReceiptPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TableCashReceipts = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        tF_City = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tF_No = new javax.swing.JTextField();
-        tF_Received = new javax.swing.JTextField();
-        tF_Address = new javax.swing.JTextField();
+        tF_Customer = new javax.swing.JTextField();
+        tF_Account = new javax.swing.JTextField();
         tF_Concept = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         tF_Sum = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        tF_Check = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        tF_Branch = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        tF_Bank = new javax.swing.JTextField();
         jDate = new com.toedter.calendar.JDateChooser();
-        jLabel13 = new javax.swing.JLabel();
-        tF_Cash = new javax.swing.JTextField();
         B_Save = new javax.swing.JButton();
         B_Clear = new javax.swing.JButton();
         B_Cancel = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(44, 62, 80));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 134, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CASH REGISTER RECEIPTS");
 
+        TableCashReceipts.setBackground(new java.awt.Color(44, 62, 80));
         TableCashReceipts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "No", "City", "Date", "Address", "Received From", "Sum", "Concept", "Check", "Bank", "Branch Office", "Cash"
+                "No", "Date", "Customer", "Account", "Sum", "Concept"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -103,31 +106,61 @@ public class CashReceiptPanel extends javax.swing.JPanel {
         TableCashReceipts.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(TableCashReceipts);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Register"));
+        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Register", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel2.setToolTipText("");
 
-        jLabel2.setText("City");
-
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Date");
 
-        jLabel5.setText("Received from");
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Customer");
 
-        jLabel7.setText("Address");
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Account");
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Concept");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("No.");
 
+        tF_No.setBackground(new java.awt.Color(44, 62, 80));
+        tF_No.setForeground(new java.awt.Color(255, 255, 255));
+        tF_No.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tF_No.setCaretColor(new java.awt.Color(255, 255, 255));
+
+        tF_Customer.setBackground(new java.awt.Color(44, 62, 80));
+        tF_Customer.setForeground(new java.awt.Color(255, 255, 255));
+        tF_Customer.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tF_Customer.setCaretColor(new java.awt.Color(255, 255, 255));
+
+        tF_Account.setBackground(new java.awt.Color(44, 62, 80));
+        tF_Account.setForeground(new java.awt.Color(255, 255, 255));
+        tF_Account.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tF_Account.setCaretColor(new java.awt.Color(255, 255, 255));
+
+        tF_Concept.setBackground(new java.awt.Color(44, 62, 80));
+        tF_Concept.setForeground(new java.awt.Color(255, 255, 255));
+        tF_Concept.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tF_Concept.setCaretColor(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Sum");
 
+        tF_Sum.setBackground(new java.awt.Color(44, 62, 80));
+        tF_Sum.setForeground(new java.awt.Color(255, 255, 255));
+        tF_Sum.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tF_Sum.setCaretColor(new java.awt.Color(255, 255, 255));
+
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("$");
 
-        jLabel9.setText("Check");
-
-        jLabel11.setText("Branch Office");
-
-        jLabel10.setText("Bank");
-
-        jLabel13.setText("Cash");
+        jDate.setBackground(new java.awt.Color(44, 62, 80));
+        jDate.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        jDate.setForeground(new java.awt.Color(255, 255, 255));
+        jDate.setToolTipText("dd/MM/yyyy");
+        jDate.setDateFormatString("dd/MM/yyyy");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -135,137 +168,77 @@ public class CashReceiptPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(30, 30, 30)
-                        .addComponent(tF_City, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel3)
-                        .addGap(10, 10, 10)
-                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_No, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tF_No, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tF_Customer))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(23, 23, 23)
-                        .addComponent(tF_Check, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel10)
-                        .addGap(4, 4, 4)
-                        .addComponent(tF_Bank, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel11)
+                        .addComponent(jLabel7)
+                        .addGap(7, 7, 7)
+                        .addComponent(tF_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tF_Branch, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel6)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(tF_Sum, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(10, 10, 10)
-                                .addComponent(tF_Concept))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(10, 10, 10)
-                                    .addComponent(tF_Address, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(4, 4, 4)
-                                    .addComponent(tF_Received, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(5, 5, 5)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(tF_Sum, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tF_Cash)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel8)
+                        .addGap(10, 10, 10)
+                        .addComponent(tF_Concept)))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(tF_City, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tF_No, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4)))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel5))
-                            .addComponent(tF_Received, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(tF_Address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tF_Sum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel6))))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel8))
-                            .addComponent(tF_Concept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(tF_Cash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(12, 12, 12)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3))
+                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(tF_Customer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tF_Account, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tF_Sum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(tF_Check, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel10))
-                    .addComponent(tF_Bank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel11))
-                    .addComponent(tF_Branch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(jLabel8))
+                    .addComponent(tF_Concept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        B_Save.setBackground(new java.awt.Color(76, 201, 91));
+        B_Save.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        B_Save.setForeground(new java.awt.Color(255, 255, 255));
         B_Save.setText("Save");
+        B_Save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         B_Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 B_SaveActionPerformed(evt);
             }
         });
 
+        B_Clear.setBackground(new java.awt.Color(0, 153, 153));
+        B_Clear.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        B_Clear.setForeground(new java.awt.Color(255, 255, 255));
         B_Clear.setText("Clear");
         B_Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,6 +246,9 @@ public class CashReceiptPanel extends javax.swing.JPanel {
             }
         });
 
+        B_Cancel.setBackground(new java.awt.Color(255, 0, 0));
+        B_Cancel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        B_Cancel.setForeground(new java.awt.Color(255, 255, 255));
         B_Cancel.setText("Cancel");
         B_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,12 +262,12 @@ public class CashReceiptPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(248, 248, 248)
-                .addComponent(B_Save, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addComponent(B_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 64, Short.MAX_VALUE)
                 .addGap(67, 67, 67)
-                .addComponent(B_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                .addGap(80, 80, 80)
-                .addComponent(B_Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addGap(358, 358, 358))
+                .addComponent(B_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(72, 72, 72)
+                .addComponent(B_Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(355, 355, 355))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -310,13 +286,13 @@ public class CashReceiptPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(B_Save)
-                    .addComponent(B_Clear)
-                    .addComponent(B_Cancel))
+                    .addComponent(B_Save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(B_Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(8, 8, 8)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -324,56 +300,42 @@ public class CashReceiptPanel extends javax.swing.JPanel {
     private void B_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SaveActionPerformed
         try {
             int no = Integer.parseInt(tF_No.getText().trim());
-            String city = tF_City.getText().trim();
-            DateFormat f = new SimpleDateFormat("dd-MM-yyyy");
-            String date = f.format(jDate.getDate());
-            String address = tF_Address.getText().trim();
-            String received = tF_Received.getText().trim();
+            
+            Date date = jDate.getDate();
+            a.setOwner(tF_Account.getText().trim());
+            c.setName(tF_Customer.getText().trim());
             int sum = Integer.parseInt(tF_Sum.getText().trim());
             String concept = tF_Concept.getText().trim();
-            int check = Integer.parseInt(tF_Check.getText().trim());
-            String bank = tF_Bank.getText().trim();
-            String branchOffice = tF_Branch.getText().trim();
-            int cash = Integer.parseInt(tF_Cash.getText().trim());
 
-            // crc.CashRegisterReceipts(no, city, date, address, received, sum, concept, check, bank, branchOffice, cash);
+            crcc.CashRegisterReceipts(no, date, c, a, sum, concept);
 
             DefaultTableModel modelCashReceipt = (DefaultTableModel) TableCashReceipts.getModel();
-            //modelCashReceipt.addRow((Object[]) crc.loadCash());
+            modelCashReceipt.addRow((Object[]) crcc.loadCash());
             TableCashReceipts.setModel(modelCashReceipt);
 
             tF_No.setText(null);
-            tF_City.setText(null);
-            tF_Address.setText(null);
-            tF_Bank.setText(null);
-            tF_Branch.setText(null);
-            tF_Cash.setText(null);
-            tF_Check.setText(null);
+            tF_Account.setText(null);
             tF_Concept.setText(null);
-            tF_Received.setText(null);
+            tF_Customer.setText(null);
             tF_Sum.setText(null);
             jDate.setDate(null);
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            pc.getPanel(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_B_SaveActionPerformed
 
     private void B_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ClearActionPerformed
         tF_No.setText(null);
-        tF_City.setText(null);
-        tF_Address.setText(null);
-        tF_Bank.setText(null);
-        tF_Branch.setText(null);
-        tF_Cash.setText(null);
-        tF_Check.setText(null);
+        tF_Account.setText(null);
         tF_Concept.setText(null);
-        tF_Received.setText(null);
+        tF_Customer.setText(null);
         tF_Sum.setText(null);
         jDate.setDate(null);
     }//GEN-LAST:event_B_ClearActionPerformed
 
     private void B_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CancelActionPerformed
+        //new explode(this, appp).play();
         this.setVisible(false);
     }//GEN-LAST:event_B_CancelActionPerformed
 
@@ -385,29 +347,19 @@ public class CashReceiptPanel extends javax.swing.JPanel {
     private javax.swing.JTable TableCashReceipts;
     private com.toedter.calendar.JDateChooser jDate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField tF_Address;
-    private javax.swing.JTextField tF_Bank;
-    private javax.swing.JTextField tF_Branch;
-    private javax.swing.JTextField tF_Cash;
-    private javax.swing.JTextField tF_Check;
-    private javax.swing.JTextField tF_City;
+    private javax.swing.JTextField tF_Account;
     private javax.swing.JTextField tF_Concept;
+    private javax.swing.JTextField tF_Customer;
     private javax.swing.JTextField tF_No;
-    private javax.swing.JTextField tF_Received;
     private javax.swing.JTextField tF_Sum;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,6 +17,18 @@ public class Provider {
     private String manager;
     private String email;
 
+    public Provider() {
+    }
+
+    public Provider(int id, String name, String address, long phoneNumber, String manager, String email) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.manager = manager;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }
@@ -41,27 +53,28 @@ public class Provider {
         this.address = address;
     }
 
-    public long getPhone() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhone(int phone) {
-        this.phoneNumber = phone;
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getCity() {
+    public String getManager() {
         return manager;
     }
 
-    public void setCity(String city) {
-        this.manager = city;
+    public void setManager(String manager) {
+        this.manager = manager;
     }
 
-    public String geteMail() {
+    public String getEmail() {
         return email;
     }
 
-    public void seteMail(String mail) {
-        this.email = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
+    
 }

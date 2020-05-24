@@ -79,10 +79,4 @@ public class PettyCashVoucher {
     public void setConcept(String concept) {
         this.concept = concept;
     }
-    
-    
-    
-    
-    
-    
 }

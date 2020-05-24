@@ -29,9 +29,11 @@ public class appPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(44, 62, 80));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("French Script MT", 2, 50)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 134, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome to Finance!");
 

@@ -17,6 +17,18 @@ public class Customer {
     private String email;
     private String type;
 
+    public Customer() {
+    }
+
+    public Customer(int id, String name, int phone, String address, String email, String type) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.type = type;
+    }
+
     public int getId() {
         return id;
     }
@@ -56,7 +68,20 @@ public class Customer {
     public void setMail(String mail) {
         this.email = mail;
     }
-    
-    
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

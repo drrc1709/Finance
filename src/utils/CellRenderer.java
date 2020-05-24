@@ -35,7 +35,7 @@ public class CellRenderer extends DefaultTableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
         try {
 
-            Color colorFondo = Color.white;
+            Color colorFondo = new Color(44, 62, 80);//Color.white;
             Color colorFondoPorDefecto = new Color(192, 192, 192);
             Color colorFondoSeleccion = new Color(67, 201, 255);
 
@@ -47,7 +47,7 @@ public class CellRenderer extends DefaultTableCellRenderer {
                 this.setFont(bold);
             } else {
                 //Para las que no est�n seleccionadas se pinta el fondo de las celdas de blanco
-                this.setBackground(Color.white);
+                this.setBackground(colorFondo);
                 this.setFont(normal);
             }
 
@@ -66,27 +66,27 @@ public class CellRenderer extends DefaultTableCellRenderer {
                 this.setText(value.toString());
                 this.setForeground((selected) ? new Color(255, 255, 255) : new Color(0, 0, 0));
                 //this.setForeground( (selected)? new Color(255,255,255) :new Color(32,117,32) );
-                this.setBackground((selected) ? colorFondo : Color.WHITE);
+                this.setBackground((selected) ? colorFondo : Color.WHITE); //es aquiiii
                 this.setFont(normal);
                 //this.setFont(bold);
                 return this;
             }
-            
-            if( type.equals("numerico")) {           
-        	if (focused) {
-     			colorFondo=colorFondoSeleccion;
-     		}else{
-     			colorFondo=colorFondoPorDefecto;
-     		}
-        	// System.out.println(value);
-            this.setHorizontalAlignment( JLabel.LEFT );
-            this.setText( value.toString() );            
-            this.setForeground( (selected)? new Color(255,255,255) :new Color(32,117,32) );    
-            this.setBackground( (selected)? colorFondo :Color.WHITE);
-           // this.setBackground( (selected)? colorFondo :Color.MAGENTA);
-            this.setFont(normal);            
-            return this;   
-        }
+
+            if (type.equals("numerico")) {
+                if (focused) {
+                    colorFondo = colorFondoSeleccion;
+                } else {
+                    colorFondo = colorFondoPorDefecto;
+                }
+                // System.out.println(value);
+                this.setHorizontalAlignment(JLabel.LEFT);
+                this.setText(value.toString());
+                this.setForeground((selected) ? new Color(255, 255, 255) : new Color(32, 117, 32));
+                this.setBackground((selected) ? colorFondo : Color.WHITE);
+                // this.setBackground( (selected)? colorFondo :Color.MAGENTA);
+                this.setFont(normal);
+                return this;
+            }
 
             return this;
         } catch (Exception e) {
