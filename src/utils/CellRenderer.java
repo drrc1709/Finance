@@ -7,6 +7,7 @@ package utils;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -64,31 +65,38 @@ public class CellRenderer extends DefaultTableCellRenderer {
                 }
                 this.setHorizontalAlignment(JLabel.LEFT);
                 this.setText(value.toString());
-                this.setForeground((selected) ? new Color(255, 255, 255) : new Color(0, 0, 0));
+                //this.setForeground((selected) ? new Color(255, 255, 255) : Color.RED);//new Color(0, 0, 0));
+                this.setForeground(Color.BLACK);
                 //this.setForeground( (selected)? new Color(255,255,255) :new Color(32,117,32) );
-                this.setBackground((selected) ? colorFondo : Color.WHITE); //es aquiiii
-                this.setFont(normal);
-                //this.setFont(bold);
-                return this;
-            }
-
-            if (type.equals("numerico")) {
-                if (focused) {
-                    colorFondo = colorFondoSeleccion;
+                //table.setShowVerticalLines(false);
+                table.setGridColor(Color.white);
+                
+                table.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+                if (row % 2 == 0) {
+                    this.setBackground((selected) ? colorFondo : new Color(241, 241, 241));
                 } else {
-                    colorFondo = colorFondoPorDefecto;
+                    this.setBackground((selected) ? colorFondo : Color.white);
+                    return this;
                 }
-                // System.out.println(value);
-                this.setHorizontalAlignment(JLabel.LEFT);
-                this.setText(value.toString());
-                this.setForeground((selected) ? new Color(255, 255, 255) : new Color(32, 117, 32));
-                this.setBackground((selected) ? colorFondo : Color.WHITE);
-                // this.setBackground( (selected)? colorFondo :Color.MAGENTA);
-                this.setFont(normal);
+
+                if (type.equals("numerico")) {
+                    if (focused) {
+                        colorFondo = colorFondoSeleccion;
+                    } else {
+                        colorFondo = colorFondoPorDefecto;
+                    }
+                    // System.out.println(value);
+                    this.setHorizontalAlignment(JLabel.LEFT);
+                    this.setText(value.toString());
+                    this.setForeground((selected) ? new Color(255, 255, 255) : new Color(32, 117, 32));
+                    this.setBackground((selected) ? colorFondo : Color.WHITE);
+                    // this.setBackground( (selected)? colorFondo :Color.MAGENTA);
+                    this.setFont(normal);
+                    return this;
+                }
+
                 return this;
             }
-
-            return this;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

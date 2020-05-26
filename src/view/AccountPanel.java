@@ -5,17 +5,40 @@
  */
 package view;
 
+import control.Account_Controller;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.RootPaneContainer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import model.Bank;
+import utils.CellRenderer;
+import utils.HeaderRenderer;
+import utils.paneColor;
+
 /**
  *
  * @author katherin.saenz
  */
 public class AccountPanel extends javax.swing.JPanel {
 
+    private final Bank b = new Bank();
+    private final Account_Controller ac = new Account_Controller();
+    private final paneColor pc = new paneColor();
+
     /**
      * Creates new form AccountPanel
      */
     public AccountPanel() {
         initComponents();
+
+        JTableHeader h = T_Account.getTableHeader();
+        h.setDefaultRenderer(new HeaderRenderer());
+        T_Account.setTableHeader(h);
+
+        for (int i = 0; i < T_Account.getColumnCount(); i++) {
+            T_Account.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
+        }
     }
 
     /**
@@ -27,38 +50,302 @@ public class AccountPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        bGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        tF_Number = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        tF_Bank = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        tf_Balance = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
+        tF_Owner = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        rB_Savings = new javax.swing.JRadioButton();
+        rB_Current = new javax.swing.JRadioButton();
+        Save = new javax.swing.JButton();
+        Clear = new javax.swing.JButton();
+        Cancel = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        T_Account = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(44, 62, 80));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("¿Aquí que va?");
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 134, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ACCOUNT");
+
+        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Register", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Number Account");
+
+        tF_Number.setBackground(new java.awt.Color(44, 62, 80));
+        tF_Number.setForeground(new java.awt.Color(255, 255, 255));
+        tF_Number.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tF_Number.setCaretColor(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Bank");
+
+        tF_Bank.setBackground(new java.awt.Color(44, 62, 80));
+        tF_Bank.setForeground(new java.awt.Color(255, 255, 255));
+        tF_Bank.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tF_Bank.setCaretColor(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Balance");
+
+        tf_Balance.setBackground(new java.awt.Color(44, 62, 80));
+        tf_Balance.setForeground(new java.awt.Color(255, 255, 255));
+        tf_Balance.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tf_Balance.setCaretColor(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Creation Date");
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Owner");
+
+        tF_Owner.setBackground(new java.awt.Color(44, 62, 80));
+        tF_Owner.setForeground(new java.awt.Color(255, 255, 255));
+        tF_Owner.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tF_Owner.setCaretColor(new java.awt.Color(255, 255, 255));
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Type");
+
+        rB_Savings.setBackground(new java.awt.Color(44, 62, 80));
+        bGroup.add(rB_Savings);
+        rB_Savings.setForeground(new java.awt.Color(255, 255, 255));
+        rB_Savings.setText("Savings");
+        rB_Savings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        rB_Current.setBackground(new java.awt.Color(44, 62, 80));
+        bGroup.add(rB_Current);
+        rB_Current.setForeground(new java.awt.Color(255, 255, 255));
+        rB_Current.setText("Current");
+        rB_Current.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tF_Number, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(tF_Bank, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_Balance, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(tF_Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
+                        .addGap(24, 24, 24)
+                        .addComponent(rB_Savings)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rB_Current)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tF_Number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(tF_Bank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(tf_Balance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tF_Owner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)
+                        .addComponent(rB_Savings)
+                        .addComponent(rB_Current)))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        Save.setBackground(new java.awt.Color(76, 201, 91));
+        Save.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Save.setForeground(new java.awt.Color(255, 255, 255));
+        Save.setText("Save");
+        Save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
+
+        Clear.setBackground(new java.awt.Color(0, 153, 153));
+        Clear.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Clear.setForeground(new java.awt.Color(255, 255, 255));
+        Clear.setText("Clear");
+        Clear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearActionPerformed(evt);
+            }
+        });
+
+        Cancel.setBackground(new java.awt.Color(255, 0, 0));
+        Cancel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        Cancel.setForeground(new java.awt.Color(255, 255, 255));
+        Cancel.setText("Cancel");
+        Cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
+
+        T_Account.setBackground(new java.awt.Color(44, 62, 80));
+        T_Account.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Number Account", "Bank", "Balance", "Creation Date", "Owner", "Type"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        T_Account.setFillsViewportHeight(true);
+        jScrollPane1.setViewportView(T_Account);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(Save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(258, 258, 258))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel2)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Save)
+                    .addComponent(Clear)
+                    .addComponent(Cancel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        try {
+        long number = Long.parseLong(tF_Number.getText().trim());
+        b.setName(tF_Bank.getText().trim());
+        long balance = Long.parseLong(tf_Balance.getText().trim());
+        Date date = jDateChooser1.getDate();
+        String owner = tF_Owner.getText().trim();
+        rB_Current.setActionCommand("Current");
+        rB_Savings.setActionCommand("Savings");
+        String type = bGroup.getSelection().getActionCommand();
+
+        ac.AccountRegister(number, b, balance, date, owner, type);
+
+        DefaultTableModel mAccount = (DefaultTableModel) T_Account.getModel();
+        mAccount.addRow((Object[]) ac.loadAccount());
+        T_Account.setModel(mAccount);
+
+        tF_Bank.setText(null);
+        tF_Number.setText(null);
+        tF_Owner.setText(null);
+        tf_Balance.setText(null);
+        bGroup.clearSelection();
+        jDateChooser1.setDate(null);
+        } catch(Exception e) {
+            pc.getPanel(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SaveActionPerformed
+
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+        tF_Bank.setText(null);
+        tF_Number.setText(null);
+        tF_Owner.setText(null);
+        tf_Balance.setText(null);
+        bGroup.clearSelection();
+        jDateChooser1.setDate(null);
+    }//GEN-LAST:event_ClearActionPerformed
+
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_CancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancel;
+    private javax.swing.JButton Clear;
+    private javax.swing.JButton Save;
+    private javax.swing.JTable T_Account;
+    private javax.swing.ButtonGroup bGroup;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rB_Current;
+    private javax.swing.JRadioButton rB_Savings;
+    private javax.swing.JTextField tF_Bank;
+    private javax.swing.JTextField tF_Number;
+    private javax.swing.JTextField tF_Owner;
+    private javax.swing.JTextField tf_Balance;
     // End of variables declaration//GEN-END:variables
 }
