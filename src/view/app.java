@@ -22,6 +22,7 @@ public class app extends javax.swing.JFrame {
     private final CustomersPanel cp = new CustomersPanel();
     private final ProvidersPanel pp = new ProvidersPanel();
     private final appPanel appp = new appPanel();
+    private final Quotation q = new Quotation();
 
     /**
      * Creates new form app
@@ -44,6 +45,9 @@ public class app extends javax.swing.JFrame {
         appPl = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MStart = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        MInvoice = new javax.swing.JMenu();
+        MI_Quotation = new javax.swing.JMenuItem();
         MChash = new javax.swing.JMenu();
         MPetty = new javax.swing.JMenu();
         MAccount = new javax.swing.JMenu();
@@ -61,7 +65,7 @@ public class app extends javax.swing.JFrame {
         appPl.setLayout(appPlLayout);
         appPlLayout.setHorizontalGroup(
             appPlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 457, Short.MAX_VALUE)
         );
         appPlLayout.setVerticalGroup(
             appPlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,6 +84,31 @@ public class app extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(MStart);
+
+        jMenu1.setText("Menu");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        MInvoice.setText("Invoice");
+        MInvoice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        MI_Quotation.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+        MI_Quotation.setText("Quotation");
+        MI_Quotation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MI_Quotation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MI_QuotationMouseClicked(evt);
+            }
+        });
+        MI_Quotation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MI_QuotationActionPerformed(evt);
+            }
+        });
+        MInvoice.add(MI_Quotation);
+
+        jMenu1.add(MInvoice);
+
+        jMenuBar1.add(jMenu1);
 
         MChash.setText("Cash Receipt");
         MChash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -193,6 +222,13 @@ public class app extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MStartMouseClicked
 
+    private void MI_QuotationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MI_QuotationMouseClicked
+    }//GEN-LAST:event_MI_QuotationMouseClicked
+
+    private void MI_QuotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_QuotationActionPerformed
+            new explode(appPl, q).play();
+    }//GEN-LAST:event_MI_QuotationActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,10 +269,13 @@ public class app extends javax.swing.JFrame {
     private javax.swing.JMenu MBank;
     private javax.swing.JMenu MChash;
     private javax.swing.JMenu MCustomers;
+    private javax.swing.JMenuItem MI_Quotation;
+    private javax.swing.JMenu MInvoice;
     private javax.swing.JMenu MPetty;
     private javax.swing.JMenu MProviders;
     private javax.swing.JMenu MStart;
     private javax.swing.JPanel appPl;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
