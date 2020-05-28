@@ -63,7 +63,7 @@ public class explode {
         scheduler.scheduleAtFixedRate(() -> {
             //nuevo tamaño
             d = new Dimension(container.getSize().width * count / 100, container.getSize().height * count / 100);
-            count = count + 10;
+            count += 10;
             //se recalcula la posicion mientras el jpanel crece
             px = container.getSize().width / 2 - d.width / 2;
             py = container.getSize().height / 2 - d.height / 2;

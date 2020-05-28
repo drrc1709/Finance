@@ -19,6 +19,8 @@ import utils.paneColor;
  */
 public class BankPanel extends javax.swing.JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private final paneColor pc = new paneColor();
 
     /**

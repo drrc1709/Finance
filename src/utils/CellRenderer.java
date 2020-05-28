@@ -7,7 +7,6 @@ package utils;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -19,11 +18,13 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class CellRenderer extends DefaultTableCellRenderer {
 
+    private static final long serialVersionUID = 1L;
+
     private String type = "text";
 
     //se definen por defecto los types de datos a usar
-    private Font normal = new Font("Verdana", Font.PLAIN, 12);
-    private Font bold = new Font("Verdana", Font.BOLD, 12);
+    private final Font normal = new Font("Verdana", Font.PLAIN, 12);
+    private final Font bold = new Font("Verdana", Font.BOLD, 12);
 
     public CellRenderer() {
     }
@@ -99,7 +100,6 @@ public class CellRenderer extends DefaultTableCellRenderer {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            e.printStackTrace();
         }
         return this;
     }

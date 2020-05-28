@@ -6,6 +6,9 @@
 package view;
 
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import utils.explode;
 
@@ -15,6 +18,8 @@ import utils.explode;
  */
 public class app extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 1L;
+
     private final CashReceiptPanel crp = new CashReceiptPanel();
     private final PettyCashPanel pcp = new PettyCashPanel();
     private final AccountPanel ap = new AccountPanel();
@@ -23,14 +28,21 @@ public class app extends javax.swing.JFrame {
     private final ProvidersPanel pp = new ProvidersPanel();
     private final appPanel appp = new appPanel();
     private final Quotation q = new Quotation();
+    private Glosary g =null;
 
     /**
      * Creates new form app
      */
     public app() {
-        initComponents();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        new explode(appPl, appp).play();
+        try {
+            initComponents();
+            this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            new explode(appPl, appp).play();
+                    
+                    g = new Glosary();
+        } catch (IOException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -45,7 +57,7 @@ public class app extends javax.swing.JFrame {
         appPl = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MStart = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        MMenu = new javax.swing.JMenu();
         MInvoice = new javax.swing.JMenu();
         MI_Quotation = new javax.swing.JMenuItem();
         MChash = new javax.swing.JMenu();
@@ -54,6 +66,8 @@ public class app extends javax.swing.JFrame {
         MBank = new javax.swing.JMenu();
         MCustomers = new javax.swing.JMenu();
         MProviders = new javax.swing.JMenu();
+        MHelp = new javax.swing.JMenu();
+        Glosary = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FINANCE");
@@ -65,14 +79,14 @@ public class app extends javax.swing.JFrame {
         appPl.setLayout(appPlLayout);
         appPlLayout.setHorizontalGroup(
             appPlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGap(0, 491, Short.MAX_VALUE)
         );
         appPlLayout.setVerticalGroup(
             appPlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 265, Short.MAX_VALUE)
         );
 
-        jMenuBar1.setForeground(new java.awt.Color(51, 51, 255));
+        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         MStart.setBackground(new java.awt.Color(0, 0, 0));
@@ -85,8 +99,8 @@ public class app extends javax.swing.JFrame {
         });
         jMenuBar1.add(MStart);
 
-        jMenu1.setText("Menu");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MMenu.setText("Menu");
+        MMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         MInvoice.setText("Invoice");
         MInvoice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -106,9 +120,9 @@ public class app extends javax.swing.JFrame {
         });
         MInvoice.add(MI_Quotation);
 
-        jMenu1.add(MInvoice);
+        MMenu.add(MInvoice);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(MMenu);
 
         MChash.setText("Cash Receipt");
         MChash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -164,13 +178,27 @@ public class app extends javax.swing.JFrame {
         });
         jMenuBar1.add(MProviders);
 
+        MHelp.setText("Help");
+        MHelp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        Glosary.setText("Glosary");
+        Glosary.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Glosary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GlosaryActionPerformed(evt);
+            }
+        });
+        MHelp.add(Glosary);
+
+        jMenuBar1.add(MHelp);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(appPl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(appPl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,8 +254,16 @@ public class app extends javax.swing.JFrame {
     }//GEN-LAST:event_MI_QuotationMouseClicked
 
     private void MI_QuotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MI_QuotationActionPerformed
-            new explode(appPl, q).play();
+        new explode(appPl, q).play();
     }//GEN-LAST:event_MI_QuotationActionPerformed
+
+    private void GlosaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GlosaryActionPerformed
+        try {
+        new explode(appPl, g).play();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_GlosaryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,17 +301,19 @@ public class app extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Glosary;
     private javax.swing.JMenu MAccount;
     private javax.swing.JMenu MBank;
     private javax.swing.JMenu MChash;
     private javax.swing.JMenu MCustomers;
+    private javax.swing.JMenu MHelp;
     private javax.swing.JMenuItem MI_Quotation;
     private javax.swing.JMenu MInvoice;
+    private javax.swing.JMenu MMenu;
     private javax.swing.JMenu MPetty;
     private javax.swing.JMenu MProviders;
     private javax.swing.JMenu MStart;
     private javax.swing.JPanel appPl;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,7 +15,6 @@ import model.Account;
 import model.Customer;
 import utils.CellRenderer;
 import utils.HeaderRenderer;
-import utils.explode;
 import utils.paneColor;
 
 /**
@@ -23,6 +22,8 @@ import utils.paneColor;
  * @author Daniel
  */
 public class CashReceiptPanel extends javax.swing.JPanel {
+
+    private static final long serialVersionUID = 1L;
     private final CashReceipt_Controller crcc = new CashReceipt_Controller();
     private final Account a = new Account();
     private final Customer c = new Customer();

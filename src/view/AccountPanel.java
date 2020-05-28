@@ -22,6 +22,8 @@ import utils.paneColor;
  */
 public class AccountPanel extends javax.swing.JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private final Bank b = new Bank();
     private final Account_Controller ac = new Account_Controller();
     private final paneColor pc = new paneColor();
