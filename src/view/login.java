@@ -181,9 +181,7 @@ public class login extends javax.swing.JFrame {
     private void B_SignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SignActionPerformed
         try {
             SigIn();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JSONException ex) {
+        } catch (FileNotFoundException | JSONException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_B_SignActionPerformed
@@ -196,9 +194,7 @@ public class login extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 SigIn();
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (JSONException ex) {
+            } catch (FileNotFoundException | JSONException ex) {
                 Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
