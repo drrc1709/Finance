@@ -34,6 +34,8 @@ public class app extends javax.swing.JFrame {
 
     /**
      * Creates new form app
+     * @throws java.io.FileNotFoundException
+     * @throws org.json.JSONException
      */
     public app() throws FileNotFoundException, JSONException {
         try {

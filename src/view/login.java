@@ -5,7 +5,6 @@
  */
 package view;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -22,7 +21,7 @@ import utils.paneColor;
 public class login extends javax.swing.JFrame {
 
     private static final long serialVersionUID = 1L;
-    private paneColor pc = new paneColor();
+    private final paneColor pc = new paneColor();
 
     /**
      * Creates new form login
