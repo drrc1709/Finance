@@ -30,6 +30,7 @@ public class app extends javax.swing.JFrame {
     private final ProvidersPanel pp = new ProvidersPanel();
     private final appPanel appp = new appPanel();
     private final Quotation q = new Quotation();
+    private final Quotation1 q1 = new Quotation1();
     private Glosary g = null;
 
     /**
@@ -72,6 +73,7 @@ public class app extends javax.swing.JFrame {
         MProviders = new javax.swing.JMenu();
         MHelp = new javax.swing.JMenu();
         Glosary = new javax.swing.JMenuItem();
+        jMI_Quotation = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("FINANCE");
@@ -106,7 +108,7 @@ public class app extends javax.swing.JFrame {
         MMenu.setText("Menu");
         MMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        MInvoice.setText("Invoice");
+        MInvoice.setText("Networks");
         MInvoice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         MI_Quotation.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
@@ -184,6 +186,11 @@ public class app extends javax.swing.JFrame {
 
         MHelp.setText("Help");
         MHelp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MHelpActionPerformed(evt);
+            }
+        });
 
         Glosary.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         Glosary.setText("Glosary");
@@ -194,6 +201,15 @@ public class app extends javax.swing.JFrame {
             }
         });
         MHelp.add(Glosary);
+
+        jMI_Quotation.setText("Quotation");
+        jMI_Quotation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMI_Quotation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMI_QuotationActionPerformed(evt);
+            }
+        });
+        MHelp.add(jMI_Quotation);
 
         jMenuBar1.add(MHelp);
 
@@ -270,6 +286,14 @@ public class app extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_GlosaryActionPerformed
 
+    private void MHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MHelpActionPerformed
+        
+    }//GEN-LAST:event_MHelpActionPerformed
+
+    private void jMI_QuotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_QuotationActionPerformed
+        new explode(appPl, q1).play();
+    }//GEN-LAST:event_jMI_QuotationActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -321,6 +345,7 @@ public class app extends javax.swing.JFrame {
     private javax.swing.JMenu MProviders;
     private javax.swing.JMenu MStart;
     private javax.swing.JPanel appPl;
+    private javax.swing.JMenuItem jMI_Quotation;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
