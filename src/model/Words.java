@@ -37,4 +37,11 @@ public class Words {
     public void setMeaning(String meaning) {
         this.meaning = meaning;
     }
+    
+    
+   @Override
+    public String toString(){
+     return this.getWord();
+     
+    }
 }

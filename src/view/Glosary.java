@@ -32,32 +32,30 @@ public class Glosary extends javax.swing.JPanel {
      * @throws org.json.JSONException
      */
     public Glosary() throws FileNotFoundException, IOException, JSONException {
-        initComponents();
-        Words w;
+        initComponents();       
         list.setModel(new DefaultListModel());
         DefaultListModel modelList = (DefaultListModel) list.getModel();
         JSONArray array = realizarPeticion();
         for (int i = 0; i < array.length(); i++) {
             JSONObject object = array.getJSONObject(i);
-            String r = object.getString("word");
             Gson gson = new Gson();
-            w = gson.fromJson(object.toString(), Words.class);
-            modelList.addElement(r);
+            Words w = gson.fromJson(object.toString(), Words.class);
+            modelList.addElement(w);
         }
 
         list.addListSelectionListener((ListSelectionEvent e) -> {
-            if (e.getValueIsAdjusting()) {
+            if (e.getValueIsAdjusting()) {               
                 meaningJTA.setText(((Words) modelList.getElementAt(list.getSelectedIndex())).getMeaning());
             }
         });
     }
 
     public static JSONArray realizarPeticion() throws IOException, JSONException {
-        JSONArray array = null;
-        String path = "E:\\word.json";
+        JSONArray array;
+        String path = "C:\\files_words\\word.json";
         StringBuffer response;
         try (
-                BufferedReader in = new BufferedReader(new FileReader(path))) {
+            BufferedReader in = new BufferedReader(new FileReader(path))) {
             String inputLine;
             response = new StringBuffer();
             while ((inputLine = in.readLine()) != null) {

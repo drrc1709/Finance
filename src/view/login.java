@@ -7,7 +7,11 @@ package view;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.json.JSONException;
 import utils.Login_util;
 import utils.paneColor;
 
@@ -175,7 +179,13 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_SignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SignActionPerformed
-        SigIn();
+        try {
+            SigIn();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JSONException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_B_SignActionPerformed
 
     private void B_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CancelActionPerformed
@@ -184,11 +194,17 @@ public class login extends javax.swing.JFrame {
 
     private void tF_PassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tF_PassKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            SigIn();
+            try {
+                SigIn();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (JSONException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_tF_PassKeyPressed
 
-    public void SigIn() {
+    public void SigIn() throws FileNotFoundException, JSONException {
         String user = tF_User.getText();
         String pass = String.valueOf(tF_Pass.getPassword());
 
