@@ -11,8 +11,8 @@ package model;
  */
 public class Words {
     
-    private String word;
-    private String meaning;
+   public String word;
+   public String meaning;
 
     public Words() {
     }

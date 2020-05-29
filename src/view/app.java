@@ -6,10 +6,12 @@
 package view;
 
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import org.json.JSONException;
 import utils.explode;
 
 /**
@@ -28,18 +30,18 @@ public class app extends javax.swing.JFrame {
     private final ProvidersPanel pp = new ProvidersPanel();
     private final appPanel appp = new appPanel();
     private final Quotation q = new Quotation();
-    private Glosary g =null;
+    private Glosary g = null;
 
     /**
      * Creates new form app
      */
-    public app() {
+    public app() throws FileNotFoundException, JSONException {
         try {
             initComponents();
             this.setExtendedState(JFrame.MAXIMIZED_BOTH);
             new explode(appPl, appp).play();
-                    
-                    g = new Glosary();
+
+            g = new Glosary();
         } catch (IOException ex) {
             Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -259,7 +261,7 @@ public class app extends javax.swing.JFrame {
 
     private void GlosaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GlosaryActionPerformed
         try {
-        new explode(appPl, g).play();
+            new explode(appPl, g).play();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -293,9 +295,11 @@ public class app extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
                 new app().setVisible(true);
+            } catch (FileNotFoundException | JSONException ex) {
+                Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }

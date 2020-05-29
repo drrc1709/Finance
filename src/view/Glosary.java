@@ -8,11 +8,14 @@ package view;
 import com.google.gson.Gson;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import com.google.gson.stream.JsonReader;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.List;
-import javax.swing.JOptionPane;
+import javax.swing.DefaultListModel;
 import model.Words;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import javax.swing.event.ListSelectionEvent;
 
 /**
  *
@@ -21,44 +24,49 @@ import model.Words;
 public class Glosary extends javax.swing.JPanel {
 
     private static final long serialVersionUID = 1L;
-    private final Words w = new Words();
-//    private final FileReader r = new FileReader("E:\\word.json");
-//    private final JsonReader reader = new JsonReader(r);
 
     /**
      * Creates new form Glosary
      *
      * @throws java.io.FileNotFoundException
+     * @throws org.json.JSONException
      */
-    public Glosary() throws FileNotFoundException, IOException {
+    public Glosary() throws FileNotFoundException, IOException, JSONException {
         initComponents();
-        
-        
-        try {
-            JsonReader reader = new JsonReader(new FileReader("E:\\word.json"));
+        Words w;
+        list.setModel(new DefaultListModel());
+        DefaultListModel modelList = (DefaultListModel) list.getModel();
+        JSONArray array = realizarPeticion();
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            String r = object.getString("word");
             Gson gson = new Gson();
-          List<Words> listaWords=  gson.fromJson(reader, List.class);
-            
-            reader.beginArray();
-            while (reader.hasNext()) {
-                reader.beginObject();
-                while (reader.hasNext()) {
-                    String words = reader.nextName();
-                    if (words.equals("word")) {
-                        w.setWord(reader.nextString());
-                    } else if (words.equals("meaning")) {
-                        w.setMeaning(reader.nextString());
-                    }
-                    reader.endObject();
-                }
-                reader.endArray();
-                reader.close();
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-            System.err.println(e.getMessage());
+            w = gson.fromJson(object.toString(), Words.class);
+            modelList.addElement(r);
         }
-        System.out.println(w.getWord()+"\t"+w.getMeaning());
+
+        list.addListSelectionListener((ListSelectionEvent e) -> {
+            if (e.getValueIsAdjusting()) {
+                meaningJTA.setText(((Words) modelList.getElementAt(list.getSelectedIndex())).getMeaning());
+            }
+        });
+    }
+
+    public static JSONArray realizarPeticion() throws IOException, JSONException {
+        JSONArray array = null;
+        String path = "E:\\word.json";
+        StringBuffer response;
+        try (
+                BufferedReader in = new BufferedReader(new FileReader(path))) {
+            String inputLine;
+            response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+        }
+        JSONObject myResponse = new JSONObject(response.toString());
+        array = myResponse.getJSONArray("words");
+        return array;
     }
 
     /**
@@ -72,9 +80,9 @@ public class Glosary extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        list = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        meaningJTA = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(44, 62, 80));
 
@@ -84,31 +92,34 @@ public class Glosary extends javax.swing.JPanel {
         jLabel1.setText("GLOSARY");
         jLabel1.setToolTipText("");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        list.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        list.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(list);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        meaningJTA.setColumns(20);
+        meaningJTA.setRows(5);
+        jScrollPane2.setViewportView(meaningJTA);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -124,12 +135,13 @@ public class Glosary extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    private void listValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listValueChanged
+    }//GEN-LAST:event_listValueChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JList<String> list;
+    private javax.swing.JTextArea meaningJTA;
     // End of variables declaration//GEN-END:variables
 }
