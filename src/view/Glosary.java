@@ -77,11 +77,27 @@ public class Glosary extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMI_Copy = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         list = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         meaningJTA = new javax.swing.JTextArea();
+
+        jPopupMenu1.setBackground(new java.awt.Color(44, 62, 80));
+        jPopupMenu1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jMI_Copy.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMI_Copy.setBackground(new java.awt.Color(44, 62, 80));
+        jMI_Copy.setForeground(new java.awt.Color(255, 255, 255));
+        jMI_Copy.setText("Copy");
+        jMI_Copy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMI_CopyActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMI_Copy);
 
         setBackground(new java.awt.Color(44, 62, 80));
 
@@ -91,11 +107,16 @@ public class Glosary extends javax.swing.JPanel {
         jLabel1.setText("GLOSARY");
         jLabel1.setToolTipText("");
 
+        list.setBackground(new java.awt.Color(44, 62, 80));
+        list.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        list.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        list.setForeground(new java.awt.Color(255, 255, 255));
         list.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        list.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         list.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listValueChanged(evt);
@@ -103,8 +124,17 @@ public class Glosary extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(list);
 
+        meaningJTA.setEditable(false);
+        meaningJTA.setBackground(new java.awt.Color(44, 62, 80));
         meaningJTA.setColumns(20);
+        meaningJTA.setFont(new java.awt.Font("Verdana", 0, 15)); // NOI18N
+        meaningJTA.setForeground(new java.awt.Color(255, 255, 255));
+        meaningJTA.setLineWrap(true);
         meaningJTA.setRows(5);
+        meaningJTA.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true), javax.swing.BorderFactory.createEmptyBorder(3, 6, 3, 3)));
+        meaningJTA.setCaretColor(new java.awt.Color(255, 255, 255));
+        meaningJTA.setComponentPopupMenu(jPopupMenu1);
+        meaningJTA.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane2.setViewportView(meaningJTA);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -136,8 +166,15 @@ public class Glosary extends javax.swing.JPanel {
 
     private void listValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listValueChanged
     }//GEN-LAST:event_listValueChanged
+
+    private void jMI_CopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_CopyActionPerformed
+        meaningJTA.copy();
+    }//GEN-LAST:event_jMI_CopyActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMI_Copy;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> list;

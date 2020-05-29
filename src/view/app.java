@@ -185,6 +185,7 @@ public class app extends javax.swing.JFrame {
         MHelp.setText("Help");
         MHelp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        Glosary.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         Glosary.setText("Glosary");
         Glosary.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Glosary.addActionListener(new java.awt.event.ActionListener() {
