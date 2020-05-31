@@ -5,10 +5,14 @@
  */
 package view;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import control.Account_Controller;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.Date;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.RootPaneContainer;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import model.Bank;
@@ -33,6 +37,17 @@ public class AccountPanel extends javax.swing.JPanel {
      */
     public AccountPanel() {
         initComponents();
+        JTextFieldDateEditor dateChooserEditor = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
+        jDateChooser1.getDateEditor().getUiComponent().setForeground(Color.white);
+        ((JTextFieldDateEditor)jDateChooser1.getDateEditor().getUiComponent()).setForeground(Color.white);
+        ((JTextFieldDateEditor)jDateChooser1.getDateEditor()).setForeground(Color.decode("#FFFFFF"));
+        jDateChooser1.setForeground(Color.white);
+        dateChooserEditor.setBackground(new Color(44, 62, 80));
+        dateChooserEditor.setForeground(Color.WHITE);
+        dateChooserEditor.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), 
+                javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 4)));
+          
 
         JTableHeader h = T_Account.getTableHeader();
         h.setDefaultRenderer(new HeaderRenderer());
@@ -111,6 +126,9 @@ public class AccountPanel extends javax.swing.JPanel {
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Creation Date");
+
+        jDateChooser1.setForeground(new java.awt.Color(255, 255, 255));
+        jDateChooser1.setOpaque(true);
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Owner");
@@ -287,28 +305,28 @@ public class AccountPanel extends javax.swing.JPanel {
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         try {
-        long number = Long.parseLong(tF_Number.getText().trim());
-        b.setName(tF_Bank.getText().trim());
-        long balance = Long.parseLong(tf_Balance.getText().trim());
-        Date date = jDateChooser1.getDate();
-        String owner = tF_Owner.getText().trim();
-        rB_Current.setActionCommand("Current");
-        rB_Savings.setActionCommand("Savings");
-        String type = bGroup.getSelection().getActionCommand();
+            long number = Long.parseLong(tF_Number.getText().trim());
+            b.setName(tF_Bank.getText().trim());
+            long balance = Long.parseLong(tf_Balance.getText().trim());
+            Date date = jDateChooser1.getDate();
+            String owner = tF_Owner.getText().trim();
+            rB_Current.setActionCommand("Current");
+            rB_Savings.setActionCommand("Savings");
+            String type = bGroup.getSelection().getActionCommand();
 
-        ac.AccountRegister(number, b, balance, date, owner, type);
+            ac.AccountRegister(number, b, balance, date, owner, type);
 
-        DefaultTableModel mAccount = (DefaultTableModel) T_Account.getModel();
-        mAccount.addRow((Object[]) ac.loadAccount());
-        T_Account.setModel(mAccount);
+            DefaultTableModel mAccount = (DefaultTableModel) T_Account.getModel();
+            mAccount.addRow((Object[]) ac.loadAccount());
+            T_Account.setModel(mAccount);
 
-        tF_Bank.setText(null);
-        tF_Number.setText(null);
-        tF_Owner.setText(null);
-        tf_Balance.setText(null);
-        bGroup.clearSelection();
-        jDateChooser1.setDate(null);
-        } catch(Exception e) {
+            tF_Bank.setText(null);
+            tF_Number.setText(null);
+            tF_Owner.setText(null);
+            tf_Balance.setText(null);
+            bGroup.clearSelection();
+            jDateChooser1.setDate(null);
+        } catch (Exception e) {
             pc.getPanel(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_SaveActionPerformed

@@ -34,25 +34,24 @@ public class Glosary extends javax.swing.JPanel {
     public Glosary() throws FileNotFoundException, IOException, JSONException {
         initComponents();       
         list.setModel(new DefaultListModel());
-        DefaultListModel modelList = (DefaultListModel) list.getModel();
-        JSONArray array = realizarPeticion();
+        DefaultListModel listModel = (DefaultListModel) list.getModel();
+        JSONArray array = request();
         for (int i = 0; i < array.length(); i++) {
             JSONObject object = array.getJSONObject(i);
             Gson gson = new Gson();
             Words w = gson.fromJson(object.toString(), Words.class);
-            modelList.addElement(w);
+            listModel.addElement(w);
         }
 
         list.addListSelectionListener((ListSelectionEvent e) -> {
             if (e.getValueIsAdjusting()) {               
-                meaningJTA.setText(((Words) modelList.getElementAt(list.getSelectedIndex())).getMeaning());
+                meaningJTA.setText(((Words) listModel.getElementAt(list.getSelectedIndex())).getMeaning());
             }
         });
     }
 
-    public static JSONArray realizarPeticion() throws IOException, JSONException {
+    public static JSONArray request() throws IOException, JSONException {
         JSONArray array;
-        //String path = "C:\\files_words\\word.json";
         String path = "E:\\word.json";
         StringBuffer response;
         try (

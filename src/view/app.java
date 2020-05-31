@@ -29,7 +29,7 @@ public class app extends javax.swing.JFrame {
     private final CustomersPanel cp = new CustomersPanel();
     private final ProvidersPanel pp = new ProvidersPanel();
     private final appPanel appp = new appPanel();
-    private final Quotation q = new Quotation();
+    private Quotation q = null;
     private final Quotation1 q1 = new Quotation1();
     private Glosary g = null;
 
@@ -45,6 +45,7 @@ public class app extends javax.swing.JFrame {
             new explode(appPl, appp).play();
 
             g = new Glosary();
+            q = new Quotation();
         } catch (IOException ex) {
             Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -65,6 +66,8 @@ public class app extends javax.swing.JFrame {
         MMenu = new javax.swing.JMenu();
         MInvoice = new javax.swing.JMenu();
         MI_Quotation = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         MChash = new javax.swing.JMenu();
         MPetty = new javax.swing.JMenu();
         MAccount = new javax.swing.JMenu();
@@ -125,6 +128,12 @@ public class app extends javax.swing.JFrame {
             }
         });
         MInvoice.add(MI_Quotation);
+
+        jMenuItem1.setText("jMenuItem1");
+        MInvoice.add(jMenuItem1);
+
+        jMenuItem2.setText("jMenuItem2");
+        MInvoice.add(jMenuItem2);
 
         MMenu.add(MInvoice);
 
@@ -347,5 +356,7 @@ public class app extends javax.swing.JFrame {
     private javax.swing.JPanel appPl;
     private javax.swing.JMenuItem jMI_Quotation;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
