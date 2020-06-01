@@ -27,12 +27,9 @@ public class CellRenderer extends DefaultTableCellRenderer {
     private static final long serialVersionUID = 1L;
 
     private String type = "text";
-    private JLabel label = new JLabel();
     //se definen por defecto los types de datos a usar
     private final Font normal = new Font("Verdana", Font.PLAIN, 12);
     private final Font bold = new Font("Verdana", Font.BOLD, 12);
-
-    private ImageIcon icoDelete = new ImageIcon(getClass().getResource("/ico/edit_trash.gif"));
 
     public CellRenderer() {
     }
@@ -90,13 +87,6 @@ public class CellRenderer extends DefaultTableCellRenderer {
                 }
             }
 
-            if (type.equals("icono")) {
-                label.setIcon(icoDelete);
-                label.setHorizontalAlignment(JLabel.LEFT);
-                label.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                return label;
-            }
-
             if (type.equals("currency")) {
                 //si es type texto define el color de fondo del texto y de la celda as� como la alineaci�n
                 if (focused) {
@@ -129,7 +119,7 @@ public class CellRenderer extends DefaultTableCellRenderer {
                     colorFondo = colorFondoPorDefecto;
                 }
                 // System.out.println(value);
-                this.setHorizontalAlignment(JLabel.RIGHT);
+                this.setHorizontalAlignment(JLabel.CENTER);
                 this.setText(value.toString());
                 this.setForeground((selected) ? Color.BLACK : new Color(32, 117, 32));
                 //this.setBackground((selected) ? colorFondo : Color.WHITE);

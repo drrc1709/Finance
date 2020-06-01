@@ -6,6 +6,7 @@
 package view;
 
 import com.google.gson.Gson;
+import control.Customers_Controller;
 import control.Product_Controller;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import utils.CellRenderer;
 import utils.HeaderRenderer;
+import utils.paneColor;
 
 /**
  *
@@ -33,6 +36,7 @@ import utils.HeaderRenderer;
 public final class QuoationForm extends javax.swing.JDialog {
 
     private final Product_Controller pc = new Product_Controller();
+    private final paneColor pco = new paneColor();
 
     /**
      * Creates new form QuoationForm
@@ -71,7 +75,6 @@ public final class QuoationForm extends javax.swing.JDialog {
         T_QF.getColumnModel().getColumn(1).setCellRenderer(new CellRenderer("currency"));
         T_QF.getColumnModel().getColumn(2).setCellRenderer(new CellRenderer("numerico"));
         T_QF.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer("currency"));
-        T_QF.getColumnModel().getColumn(4).setCellRenderer(new CellRenderer("icono"));
 
     }
 
@@ -91,8 +94,8 @@ public final class QuoationForm extends javax.swing.JDialog {
         array = myResponse.getJSONArray("products");
         return array;
     }
-    
-    public int totalSum(){
+
+    public int totalSum() {
         int sum = 0;
         for (int i = 0; i < T_QF.getRowCount(); i++) {
             sum = sum + Integer.parseInt(T_QF.getValueAt(i, 3).toString());
@@ -131,6 +134,9 @@ public final class QuoationForm extends javax.swing.JDialog {
         tF_Mail = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         B_Add = new javax.swing.JButton();
+        B_Remove = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        tF_No = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         T_QF = new javax.swing.JTable();
         Save = new javax.swing.JButton();
@@ -154,6 +160,8 @@ public final class QuoationForm extends javax.swing.JDialog {
         combo.setBackground(new java.awt.Color(44, 62, 80));
         combo.setForeground(new java.awt.Color(255, 255, 255));
         combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo.setAutoscrolls(true);
+        combo.setBorder(null);
         combo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboItemStateChanged(evt);
@@ -167,7 +175,7 @@ public final class QuoationForm extends javax.swing.JDialog {
         jLabel3.setText("Cant.");
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Total");
+        jLabel4.setText("Total Product");
 
         spin.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         spin.setBorder(null);
@@ -233,12 +241,12 @@ public final class QuoationForm extends javax.swing.JDialog {
         tF_Mail.setCaretColor(new java.awt.Color(255, 255, 255));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Procdut");
+        jLabel10.setText("Product");
 
         B_Add.setBackground(new java.awt.Color(0, 0, 255));
         B_Add.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         B_Add.setForeground(new java.awt.Color(255, 255, 255));
-        B_Add.setText("Add");
+        B_Add.setText("+");
         B_Add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         B_Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,32 +254,39 @@ public final class QuoationForm extends javax.swing.JDialog {
             }
         });
 
+        B_Remove.setBackground(new java.awt.Color(255, 153, 102));
+        B_Remove.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        B_Remove.setForeground(new java.awt.Color(255, 255, 255));
+        B_Remove.setText("-");
+        B_Remove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        B_Remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_RemoveActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("No.");
+
+        tF_No.setBackground(new java.awt.Color(44, 62, 80));
+        tF_No.setForeground(new java.awt.Color(255, 255, 255));
+        tF_No.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+        tF_No.setCaretColor(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7)
-                        .addGap(2, 2, 2)
-                        .addComponent(tF_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_Phone))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tF_Address, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel9))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
@@ -282,7 +297,8 @@ public final class QuoationForm extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TF_UP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tF_Mail, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel3)
@@ -290,12 +306,30 @@ public final class QuoationForm extends javax.swing.JDialog {
                                 .addComponent(spin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(TF_T, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(B_Add))
-                            .addComponent(tF_Mail, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(B_Add)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(B_Remove)
+                                .addGap(31, 31, 31))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tF_No, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tF_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tF_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tF_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +341,9 @@ public final class QuoationForm extends javax.swing.JDialog {
                     .addComponent(jLabel7)
                     .addComponent(tF_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(tF_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tF_Phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(tF_No, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -315,38 +351,42 @@ public final class QuoationForm extends javax.swing.JDialog {
                     .addComponent(jLabel9)
                     .addComponent(tF_Mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(TF_T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(B_Add)
+                        .addComponent(B_Remove))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(spin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(TF_UP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(spin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel4)
-                                .addComponent(TF_T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(B_Add)))))
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)))
                 .addGap(70, 70, 70))
         );
 
+        T_QF.setBackground(new java.awt.Color(44, 62, 80));
         T_QF.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Product", "Unit Price", "Cant", "Total", " "
+                "Product", "Unit Price", "Cant", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        T_QF.setFillsViewportHeight(true);
         jScrollPane1.setViewportView(T_QF);
 
         Save.setBackground(new java.awt.Color(76, 201, 91));
@@ -412,17 +452,17 @@ public final class QuoationForm extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(243, 243, 243)
                 .addComponent(Save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
                 .addComponent(Clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
                 .addComponent(Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(287, 287, 287))
+                .addGap(295, 295, 295))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TF_T1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(35, 35, 35))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,31 +471,25 @@ public final class QuoationForm extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Save)
-                            .addComponent(Clear)
-                            .addComponent(Cancel))
-                        .addGap(19, 19, 19)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TF_T1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
-                        .addContainerGap())))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Save)
+                    .addComponent(Clear)
+                    .addComponent(Cancel))
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TF_T1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,31 +511,30 @@ public final class QuoationForm extends javax.swing.JDialog {
     }//GEN-LAST:event_spinStateChanged
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-//        try {
-//            long number = Long.parseLong(tF_Number.getText().trim());
-//            b.setName(tF_Bank.getText().trim());
-//            long balance = Long.parseLong(tf_Balance.getText().trim());
-//            Date date = jDateChooser1.getDate();
-//            String owner = tF_Owner.getText().trim();
-//            rB_Current.setActionCommand("Current");
-//            rB_Savings.setActionCommand("Savings");
-//            String type = bGroup.getSelection().getActionCommand();
-//
-//            ac.AccountRegister(number, b, balance, date, owner, type);
-//
-//            DefaultTableModel mAccount = (DefaultTableModel) T_Account.getModel();
-//            mAccount.addRow((Object[]) ac.loadAccount());
-//            T_Account.setModel(mAccount);
-//
-//            tF_Bank.setText(null);
-//            tF_Number.setText(null);
-//            tF_Owner.setText(null);
-//            tf_Balance.setText(null);
-//            bGroup.clearSelection();
-//            jDateChooser1.setDate(null);
-//        } catch (Exception e) {
-//            pc.getPanel(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-//        }
+        try {
+            int no = Integer.parseInt(tF_No.getText());
+            int id = Integer.parseInt(tF_Id.getText());
+            String name = tF_Name.getText();
+            int phone = Integer.parseInt(tF_Phone.getText());
+            String address = tF_Address.getText();
+            String mail = tF_Mail.getText();
+            int t = (int) TF_T1.getValue();
+            int p = T_QF.getRowCount();
+
+            Customers_Controller cc = new Customers_Controller();
+            cc.RegisterCustomers(id, name, phone, address, mail);
+            DefaultTableModel mCustomer = (DefaultTableModel) T_QF.getModel();
+            mCustomer.addRow((Object[]) cc.loadCustomers());
+            T_QF.setModel(mCustomer);
+
+            tF_Address.setText(null);
+            tF_Id.setText(null);
+            tF_Mail.setText(null);
+            tF_Name.setText(null);
+            tF_Phone.setText(null);
+        } catch (NumberFormatException e) {
+            pco.getPanel(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_SaveActionPerformed
 
     private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
@@ -514,22 +547,45 @@ public final class QuoationForm extends javax.swing.JDialog {
     }//GEN-LAST:event_ClearActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_CancelActionPerformed
 
     private void B_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_AddActionPerformed
-        String product = combo.getSelectedItem().toString();
-        int unitPrice = (int) TF_UP.getValue();
-        int cant = (int) spin.getValue();
-        int total = (int) TF_T.getValue();
+        try {
+            String product = combo.getSelectedItem().toString();
+            int unitPrice = (int) TF_UP.getValue();
+            int cant = (int) spin.getValue();
+            int total = (int) TF_T.getValue();
 
-        pc.register(product, unitPrice, cant, total);
+            pc.register(product, unitPrice, cant, total);
 
-        DefaultTableModel mAccount = (DefaultTableModel) T_QF.getModel();
-        mAccount.addRow((Object[]) pc.show());
-        T_QF.setModel(mAccount);
-        TF_T1.setValue(totalSum());
+            DefaultTableModel m_QF = (DefaultTableModel) T_QF.getModel();
+            m_QF.addRow((Object[]) pc.show());
+            T_QF.setModel(m_QF);
+            TF_T1.setValue(totalSum());
+
+            TF_UP.setText(null);
+            TF_UP.setValue(null);
+            combo.setSelectedItem(-1);
+            //spin.setValue(0);
+            JTextField tf = ((JSpinner.DefaultEditor) spin.getEditor()).getTextField();
+            tf.setText(0 + "");
+            TF_T.setText(null);
+            TF_T.setValue(null);
+        } catch (Exception e) {
+            pco.getPanel(rootPane, "Please, Select a product", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_B_AddActionPerformed
+
+    private void B_RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RemoveActionPerformed
+        DefaultTableModel m_QF = (DefaultTableModel) T_QF.getModel();
+        if (T_QF.getSelectedRow() < 0) {
+            pco.getPanel(rootPane, "Please, Select a row to remove", "Information", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            m_QF.removeRow(T_QF.getSelectedRow());
+            TF_T1.setValue(totalSum());
+        }
+    }//GEN-LAST:event_B_RemoveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -577,6 +633,7 @@ public final class QuoationForm extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_Add;
+    private javax.swing.JButton B_Remove;
     private javax.swing.JButton Cancel;
     private javax.swing.JButton Clear;
     private javax.swing.JButton Save;
@@ -588,6 +645,7 @@ public final class QuoationForm extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -604,6 +662,7 @@ public final class QuoationForm extends javax.swing.JDialog {
     private javax.swing.JTextField tF_Id;
     private javax.swing.JTextField tF_Mail;
     private javax.swing.JTextField tF_Name;
+    private javax.swing.JTextField tF_No;
     private javax.swing.JTextField tF_Phone;
     // End of variables declaration//GEN-END:variables
 }
