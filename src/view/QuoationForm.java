@@ -8,6 +8,7 @@ package view;
 import com.google.gson.Gson;
 import control.Customers_Controller;
 import control.Product_Controller;
+import control.Quotation_Controller;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.io.BufferedReader;
@@ -21,6 +22,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import model.Customer;
 import model.Products;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +42,10 @@ public final class QuoationForm extends javax.swing.JDialog {
 
     /**
      * Creates new form QuoationForm
+     * @param parent
+     * @param modal
+     * @throws java.io.IOException
+     * @throws org.json.JSONException
      */
     public QuoationForm(java.awt.Frame parent, boolean modal) throws IOException, JSONException {
         super(parent, modal);
@@ -278,8 +284,8 @@ public final class QuoationForm extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -316,8 +322,8 @@ public final class QuoationForm extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_No, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tF_No, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tF_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -515,25 +521,37 @@ public final class QuoationForm extends javax.swing.JDialog {
             int no = Integer.parseInt(tF_No.getText());
             int id = Integer.parseInt(tF_Id.getText());
             String name = tF_Name.getText();
-            int phone = Integer.parseInt(tF_Phone.getText());
+            long phone = Long.parseLong(tF_Phone.getText());
             String address = tF_Address.getText();
             String mail = tF_Mail.getText();
             int t = (int) TF_T1.getValue();
             int p = T_QF.getRowCount();
+            
+            Customer c = new Customer();
+            
+            c.setId(id);
+            c.setName(name);
+            c.setPhone(phone);
+            c.setAddress(address);
+            c.setEmail(mail);
+            
+            Quotation_Controller qc = new Quotation_Controller();
+            qc.registerQuotation(no, c, t, p);
+            
+            Quotation q = new Quotation();
+            q.updatTable();
+            
+            this.dispose();
 
-            Customers_Controller cc = new Customers_Controller();
-            cc.RegisterCustomers(id, name, phone, address, mail);
-            DefaultTableModel mCustomer = (DefaultTableModel) T_QF.getModel();
-            mCustomer.addRow((Object[]) cc.loadCustomers());
-            T_QF.setModel(mCustomer);
-
-            tF_Address.setText(null);
-            tF_Id.setText(null);
-            tF_Mail.setText(null);
-            tF_Name.setText(null);
-            tF_Phone.setText(null);
+//            tF_Address.setText(null);
+//            tF_Id.setText(null);
+//            tF_Mail.setText(null);
+//            tF_Name.setText(null);
+//            tF_Phone.setText(null);
         } catch (NumberFormatException e) {
             pco.getPanel(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (JSONException | IOException ex) {
+            Logger.getLogger(QuoationForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_SaveActionPerformed
 

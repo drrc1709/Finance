@@ -12,7 +12,7 @@ package model;
 public class Customer {
     private int id;
     private String name;
-    private int phone;
+    private long phone;
     private String address;
     private String email;
     private String type;
@@ -20,7 +20,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String name, int phone, String address, String email, String type) {
+    public Customer(int id, String name, long phone, String address, String email, String type) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -45,11 +45,11 @@ public class Customer {
         this.name = name;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 

@@ -17,7 +17,7 @@ public class Customers_Controller {
     private final Customer c = new Customer();
     private final paneColor pc = new paneColor();
 
-    public void RegisterCustomers(int id, String name, int phone, String address, String mail){
+    public void RegisterCustomers(int id, String name, long phone, String address, String mail){
         c.setId(id);
         c.setName(name);
         c.setPhone(phone);

@@ -5,17 +5,24 @@
  */
 package view;
 
+import control.Quotation_Controller;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import org.json.JSONException;
+import utils.CellRenderer;
+import utils.HeaderRenderer;
+
 /**
  *
  * @author Daniel
  */
 public class Quotation extends javax.swing.JPanel {
+
     private QuoationForm qf = null;
-        
+    private final Quotation_Controller qc = new Quotation_Controller();
 
     /**
      * Creates new form Quotation
@@ -25,12 +32,28 @@ public class Quotation extends javax.swing.JPanel {
      */
     public Quotation() throws JSONException, IOException {
         try {
-         initComponents();                                                                       
-         qf = new QuoationForm(null, true);
+            initComponents();
+            JTableHeader h = T_Quotation.getTableHeader();
+            h.setDefaultRenderer(new HeaderRenderer());
+            T_Quotation.setTableHeader(h);
+
+            T_Quotation.getColumnModel().getColumn(0).setCellRenderer(new CellRenderer("numerico"));
+            T_Quotation.getColumnModel().getColumn(1).setCellRenderer(new CellRenderer("texto"));
+            T_Quotation.getColumnModel().getColumn(2).setCellRenderer(new CellRenderer("numerico"));
+            T_Quotation.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer("currency"));
+            
+            qf = new QuoationForm(null, true);
         } catch (Exception e) {
             Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+
+    public void updatTable() {
         
+        DefaultTableModel mQuotation = (DefaultTableModel) T_Quotation.getModel();
+        mQuotation.addRow((Object[]) qc.loadQuotation());
+        T_Quotation.setModel(mQuotation);
+        T_Quotation.repaint();
     }
 
     /**
@@ -45,7 +68,8 @@ public class Quotation extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        T_Quotation = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(44, 62, 80));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -65,18 +89,31 @@ public class Quotation extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        T_Quotation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No", "Customer", "Total Products", "Total Quotation"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(T_Quotation);
+
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Update");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -84,6 +121,8 @@ public class Quotation extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
@@ -102,7 +141,9 @@ public class Quotation extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addContainerGap())
@@ -113,10 +154,15 @@ public class Quotation extends javax.swing.JPanel {
         qf.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.updatTable();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTable T_Quotation;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,14 +5,10 @@
  */
 package view;
 
-import com.toedter.calendar.JTextFieldDateEditor;
 import control.Account_Controller;
 import java.awt.Color;
-import java.awt.Component;
 import java.util.Date;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import model.Bank;
@@ -37,17 +33,6 @@ public class AccountPanel extends javax.swing.JPanel {
      */
     public AccountPanel() {
         initComponents();
-        JTextFieldDateEditor dateChooserEditor = ((JTextFieldDateEditor)jDateChooser1.getDateEditor());
-        jDateChooser1.getDateEditor().getUiComponent().setForeground(Color.white);
-        ((JTextFieldDateEditor)jDateChooser1.getDateEditor().getUiComponent()).setForeground(Color.white);
-        ((JTextFieldDateEditor)jDateChooser1.getDateEditor()).setForeground(Color.decode("#FFFFFF"));
-        jDateChooser1.setForeground(Color.white);
-        dateChooserEditor.setBackground(new Color(44, 62, 80));
-        dateChooserEditor.setForeground(Color.WHITE);
-        dateChooserEditor.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-                javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), 
-                javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 4)));
-          
 
         JTableHeader h = T_Account.getTableHeader();
         h.setDefaultRenderer(new HeaderRenderer());

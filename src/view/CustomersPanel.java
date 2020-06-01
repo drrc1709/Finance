@@ -267,7 +267,7 @@ public class CustomersPanel extends javax.swing.JPanel {
         try {
             int id = Integer.parseInt(tF_Id.getText());
             String name = tF_Name.getText();
-            int phone = Integer.parseInt(tF_Phone.getText());
+            long phone = Long.parseLong(tF_Phone.getText());
             String address = tF_Address.getText();
             String mail = tF_Mail.getText();
 
