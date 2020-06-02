@@ -86,7 +86,7 @@ public final class QuoationForm extends javax.swing.JDialog {
 
     public static JSONArray request() throws IOException, JSONException {
         JSONArray array;
-        String path = "E:\\products.json";
+        String path = "C:\\products.json";
         StringBuffer response;
         try (
                 BufferedReader in = new BufferedReader(new FileReader(path))) {

@@ -5,9 +5,12 @@
  */
 package view;
 
+import java.awt.Desktop;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -35,6 +38,7 @@ public class app extends javax.swing.JFrame {
 
     /**
      * Creates new form app
+     *
      * @throws java.io.FileNotFoundException
      * @throws org.json.JSONException
      */
@@ -66,8 +70,8 @@ public class app extends javax.swing.JFrame {
         MMenu = new javax.swing.JMenu();
         MInvoice = new javax.swing.JMenu();
         MI_Quotation = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        Mi_Description = new javax.swing.JMenuItem();
+        Mi_Blueprints = new javax.swing.JMenuItem();
         MChash = new javax.swing.JMenu();
         MPetty = new javax.swing.JMenu();
         MAccount = new javax.swing.JMenu();
@@ -113,6 +117,11 @@ public class app extends javax.swing.JFrame {
 
         MInvoice.setText("Networks");
         MInvoice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MInvoiceActionPerformed(evt);
+            }
+        });
 
         MI_Quotation.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         MI_Quotation.setText("Quotation");
@@ -129,11 +138,21 @@ public class app extends javax.swing.JFrame {
         });
         MInvoice.add(MI_Quotation);
 
-        jMenuItem1.setText("jMenuItem1");
-        MInvoice.add(jMenuItem1);
+        Mi_Description.setText("Description");
+        Mi_Description.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mi_DescriptionActionPerformed(evt);
+            }
+        });
+        MInvoice.add(Mi_Description);
 
-        jMenuItem2.setText("jMenuItem2");
-        MInvoice.add(jMenuItem2);
+        Mi_Blueprints.setText("Blueprints");
+        Mi_Blueprints.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Mi_BlueprintsActionPerformed(evt);
+            }
+        });
+        MInvoice.add(Mi_Blueprints);
 
         MMenu.add(MInvoice);
 
@@ -296,12 +315,34 @@ public class app extends javax.swing.JFrame {
     }//GEN-LAST:event_GlosaryActionPerformed
 
     private void MHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MHelpActionPerformed
-        
+
     }//GEN-LAST:event_MHelpActionPerformed
 
     private void jMI_QuotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_QuotationActionPerformed
         new explode(appPl, q1).play();
     }//GEN-LAST:event_jMI_QuotationActionPerformed
+
+    private void MInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MInvoiceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MInvoiceActionPerformed
+
+    private void Mi_DescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mi_DescriptionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Mi_DescriptionActionPerformed
+
+    private void Mi_BlueprintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mi_BlueprintsActionPerformed
+        Desktop enlace = Desktop.getDesktop();
+        try {
+            try {
+                enlace.browse(new URI("https://en.calameo.com/read/0060970693e6437dd9bba"));
+            } catch (IOException ex) {
+                Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
+            ex.getMessage();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_Mi_BlueprintsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,10 +394,10 @@ public class app extends javax.swing.JFrame {
     private javax.swing.JMenu MPetty;
     private javax.swing.JMenu MProviders;
     private javax.swing.JMenu MStart;
+    private javax.swing.JMenuItem Mi_Blueprints;
+    private javax.swing.JMenuItem Mi_Description;
     private javax.swing.JPanel appPl;
     private javax.swing.JMenuItem jMI_Quotation;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
