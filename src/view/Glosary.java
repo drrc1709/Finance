@@ -52,7 +52,7 @@ public class Glosary extends javax.swing.JPanel {
 
     public static JSONArray request() throws IOException, JSONException {
         JSONArray array;
-        String path = "E:\\word.json";
+        String path = "C:\\word.json";
         StringBuffer response;
         try (
             BufferedReader in = new BufferedReader(new FileReader(path))) {
