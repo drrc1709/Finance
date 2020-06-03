@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Desktop;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
@@ -331,17 +332,13 @@ public class app extends javax.swing.JFrame {
     }//GEN-LAST:event_Mi_DescriptionActionPerformed
 
     private void Mi_BlueprintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mi_BlueprintsActionPerformed
-        Desktop enlace = Desktop.getDesktop();
+        
         try {
-            try {
-                enlace.browse(new URI("https://en.calameo.com/read/0060970693e6437dd9bba"));
-            } catch (IOException ex) {
-                Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, ex);
-            ex.getMessage();
-        }        // TODO add your handling code here:
+            String f = "C:\\PLANOS.pdf";
+            File path = new File(f);
+            Desktop.getDesktop().open(path);
+        } catch (IOException ex) {
+        }
     }//GEN-LAST:event_Mi_BlueprintsActionPerformed
 
     /**
