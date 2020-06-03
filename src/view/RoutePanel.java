@@ -41,6 +41,7 @@ public class RoutePanel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Run Route");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -56,7 +57,7 @@ public class RoutePanel extends javax.swing.JPanel {
         jTextArea1.setRows(5);
         jTextArea1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), javax.swing.BorderFactory.createEmptyBorder(5, 20, 1, 1)));
         jTextArea1.setCaretColor(new java.awt.Color(255, 255, 255));
-        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -65,8 +66,8 @@ public class RoutePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(160, 160, 160)
-                .addComponent(jButton1)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(143, 143, 143))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -88,11 +89,12 @@ public class RoutePanel extends javax.swing.JPanel {
         jTextArea1.setText(null);
         try {
 
-            String command = "powershell.exe  route print";
-            Process p = Runtime.getRuntime().exec(command);
+            //String command = "C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe  route print";
+            String command = "route print";
+            Process powerShellProcess = Runtime.getRuntime().exec(command);
 
-            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream(), "UTF8"));
-            BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream(), "UTF8"));
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(powerShellProcess.getInputStream(), "UTF8"));
+            BufferedReader stdError = new BufferedReader(new InputStreamReader(powerShellProcess.getErrorStream(), "UTF8"));
 
             while ((s = stdInput.readLine()) != null) {
                 jTextArea1.append(s + "\n");
@@ -106,7 +108,7 @@ public class RoutePanel extends javax.swing.JPanel {
 
 
         } catch (IOException e) {
-            System.out.println("exception happened - here's what I know: ");
+            System.out.println("exception happened - here's what I know: \n"+e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
