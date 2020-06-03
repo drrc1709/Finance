@@ -193,7 +193,6 @@ public class CustomersPanel extends javax.swing.JPanel {
             }
         });
 
-        T_Customers.setAutoCreateRowSorter(true);
         T_Customers.setBackground(new java.awt.Color(44, 62, 80));
         T_Customers.setForeground(new java.awt.Color(51, 255, 51));
         T_Customers.setModel(new javax.swing.table.DefaultTableModel(
@@ -212,7 +211,6 @@ public class CustomersPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        T_Customers.setColumnSelectionAllowed(true);
         T_Customers.setFillsViewportHeight(true);
         T_Customers.setGridColor(new java.awt.Color(44, 62, 80));
         T_Customers.setSelectionBackground(new java.awt.Color(44, 62, 80));

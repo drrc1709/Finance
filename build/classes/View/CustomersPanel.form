@@ -399,7 +399,6 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="T_Customers">
           <Properties>
-            <Property name="autoCreateRowSorter" type="boolean" value="true"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="50" green="3e" red="2c" type="rgb"/>
             </Property>
@@ -415,7 +414,6 @@
                 <Column editable="false" title="Mail" type="java.lang.Object"/>
               </Table>
             </Property>
-            <Property name="columnSelectionAllowed" type="boolean" value="true"/>
             <Property name="fillsViewportHeight" type="boolean" value="true"/>
             <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="50" green="3e" red="2c" type="rgb"/>

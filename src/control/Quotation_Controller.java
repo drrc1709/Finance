@@ -24,7 +24,6 @@ public class Quotation_Controller {
         q.setT(t);
         q.setP(p);
         pc.getPanel(null, "Quotation Registred!", "Registred", JOptionPane.INFORMATION_MESSAGE);
-        System.out.println("Register\n"+q.getNo()+"\n"+q.getC()+"\n"+q.getP()+"\n"+q.getT());
     }
     
     public Object loadQuotation(){
@@ -34,7 +33,6 @@ public class Quotation_Controller {
         o[2] = q.getP();
         o[3] = q.getT();
         
-        System.out.println(q.getNo()+"\n"+q.getC()+"\n"+q.getP()+"\n"+q.getT());
         return o;
     }
     
