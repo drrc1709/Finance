@@ -321,6 +321,12 @@ public class app extends javax.swing.JFrame {
 
     private void jMI_QuotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_QuotationActionPerformed
         new explode(appPl, q1).play();
+        try {
+            String f = "C:\\EstimateOK_LICOR.pdf";
+            File path = new File(f);
+            Desktop.getDesktop().open(path);
+        } catch (IOException ex) {
+        }
     }//GEN-LAST:event_jMI_QuotationActionPerformed
 
     private void MInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MInvoiceActionPerformed
@@ -328,7 +334,12 @@ public class app extends javax.swing.JFrame {
     }//GEN-LAST:event_MInvoiceActionPerformed
 
     private void Mi_DescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mi_DescriptionActionPerformed
-        // TODO add your handling code here:
+       try {
+            String f = "C:\\DESCRIPCIÓN_REDES.pdf";
+            File path = new File(f);
+            Desktop.getDesktop().open(path);
+        } catch (IOException ex) {
+        } // TODO add your handling code here:
     }//GEN-LAST:event_Mi_DescriptionActionPerformed
 
     private void Mi_BlueprintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mi_BlueprintsActionPerformed
