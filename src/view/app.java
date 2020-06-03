@@ -36,6 +36,7 @@ public class app extends javax.swing.JFrame {
     private Quotation q = null;
     private final Quotation1 q1 = new Quotation1();
     private Glosary g = null;
+    private final RoutePanel rp = new RoutePanel();
 
     /**
      * Creates new form app
@@ -73,6 +74,7 @@ public class app extends javax.swing.JFrame {
         MI_Quotation = new javax.swing.JMenuItem();
         Mi_Description = new javax.swing.JMenuItem();
         Mi_Blueprints = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         MChash = new javax.swing.JMenu();
         MPetty = new javax.swing.JMenu();
         MAccount = new javax.swing.JMenu();
@@ -154,6 +156,14 @@ public class app extends javax.swing.JFrame {
             }
         });
         MInvoice.add(Mi_Blueprints);
+
+        jMenuItem1.setText("Route");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        MInvoice.add(jMenuItem1);
 
         MMenu.add(MInvoice);
 
@@ -352,6 +362,14 @@ public class app extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Mi_BlueprintsActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try {
+            new explode(appPl, rp).play();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -407,5 +425,6 @@ public class app extends javax.swing.JFrame {
     private javax.swing.JPanel appPl;
     private javax.swing.JMenuItem jMI_Quotation;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
