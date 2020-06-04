@@ -5,7 +5,6 @@
  */
 package view;
 
-
 import control.CashReceipt_Controller;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -28,21 +27,23 @@ public class CashReceiptPanel extends javax.swing.JPanel {
     private final Account a = new Account();
     private final Customer c = new Customer();
     private final paneColor pc = new paneColor();
-    private final appPanel appp = new appPanel();
 
     /**
      * Creates new form CashReceiptPanel
      */
     public CashReceiptPanel() {
         initComponents();
-        
+
         JTableHeader h = TableCashReceipts.getTableHeader();
         h.setDefaultRenderer(new HeaderRenderer());
         TableCashReceipts.setTableHeader(h);
-        
-        for (int i = 0; i < TableCashReceipts.getColumnCount(); i++) {
-            TableCashReceipts.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
-        } 
+
+        TableCashReceipts.getColumnModel().getColumn(0).setCellRenderer(new CellRenderer("numerico"));
+        TableCashReceipts.getColumnModel().getColumn(1).setCellRenderer(new CellRenderer("texto"));
+        TableCashReceipts.getColumnModel().getColumn(2).setCellRenderer(new CellRenderer("texto"));
+        TableCashReceipts.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer("texto"));
+        TableCashReceipts.getColumnModel().getColumn(4).setCellRenderer(new CellRenderer("currency"));
+        TableCashReceipts.getColumnModel().getColumn(5).setCellRenderer(new CellRenderer("texto"));
     }
 
     /**
@@ -292,7 +293,7 @@ public class CashReceiptPanel extends javax.swing.JPanel {
     private void B_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SaveActionPerformed
         try {
             int no = Integer.parseInt(tF_No.getText().trim());
-            
+
             Date date = jDate.getDate();
             a.setOwner(tF_Account.getText().trim());
             c.setName(tF_Customer.getText().trim());

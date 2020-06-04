@@ -32,9 +32,11 @@ public class CustomersPanel extends javax.swing.JPanel {
         h.setDefaultRenderer(new HeaderRenderer());
         T_Customers.setTableHeader(h);
 
-        for (int i = 0; i < T_Customers.getColumnCount(); i++) {
-            T_Customers.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
-        }
+        T_Customers.getColumnModel().getColumn(0).setCellRenderer(new CellRenderer("numerico"));
+        T_Customers.getColumnModel().getColumn(1).setCellRenderer(new CellRenderer("texto"));
+        T_Customers.getColumnModel().getColumn(2).setCellRenderer(new CellRenderer("numerico"));
+        T_Customers.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer("texto"));
+        T_Customers.getColumnModel().getColumn(4).setCellRenderer(new CellRenderer("texto"));
     }
 
     /**

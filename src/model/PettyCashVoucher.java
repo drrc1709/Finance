@@ -17,13 +17,13 @@ public class PettyCashVoucher {
     private Date date;
     private Provider p;
     private Account a;
-    private long value;
+    private int value;
     private String concept;
 
     public PettyCashVoucher() {
     }
 
-    public PettyCashVoucher(int idReceipt, Date date, Provider p, Account a, long value, String concept) {
+    public PettyCashVoucher(int idReceipt, Date date, Provider p, Account a, int value, String concept) {
         this.idReceipt = idReceipt;
         this.date = date;
         this.p = p;
@@ -64,11 +64,11 @@ public class PettyCashVoucher {
         this.a = a;
     }
 
-    public long getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(long value) {
+    public void setValue(int value) {
         this.value = value;
     }
 

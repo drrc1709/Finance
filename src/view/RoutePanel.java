@@ -104,6 +104,7 @@ public class RoutePanel extends javax.swing.JPanel {
             while ((s = stdError.readLine()) != null) {
                 jTextArea1.append(s + "\n");
             }
+            jTextArea1.setCaretPosition(0);
         } catch (IOException e) {
             pc.getPanel(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }

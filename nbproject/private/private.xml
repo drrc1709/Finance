@@ -3,17 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/User/Desktop/Katherin/Git/Finance/src/view/Quotation.java</file>
-            <file>file:/C:/Users/User/Desktop/Katherin/Git/Finance/src/control/Quotation_Controller.java</file>
+            <file>file:/C:/Users/User/Desktop/Katherin/Git/Finance/src/view/CashReceiptPanel.java</file>
             <file>file:/C:/Users/User/Desktop/Katherin/Git/Finance/src/view/AccountPanel.java</file>
-            <file>file:/C:/Users/User/Desktop/Katherin/Git/Finance/src/model/Quotation.java</file>
-            <file>file:/C:/Users/User/Desktop/Katherin/Git/Finance/src/view/CustomersPanel.java</file>
-            <file>file:/C:/Users/User/Desktop/Katherin/Git/Finance/src/view/QuoationForm.java</file>
-=======
-            <file>file:/C:/Users/katherin.saenz/Desktop/Proyecto/Finance/src/view/QuoationForm.java</file>
-            <file>file:/C:/Users/katherin.saenz/Desktop/Proyecto/Finance/src/view/app.java</file>
->>>>>>> 4e33e895441a87223205ae8aeb63c1a3c26f6c52
+            <file>file:/C:/Users/User/Desktop/Katherin/Git/Finance/src/view/PettyCashPanel.java</file>
         </group>
     </open-files>
 </project-private>

@@ -33,9 +33,12 @@ public class BankPanel extends javax.swing.JPanel {
         h.setDefaultRenderer(new HeaderRenderer());
         T_Bank.setTableHeader(h);
 
-        for (int i = 0; i < T_Bank.getColumnCount(); i++) {
-            T_Bank.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
-        }
+        T_Bank.getColumnModel().getColumn(0).setCellRenderer(new CellRenderer("numerico"));
+        T_Bank.getColumnModel().getColumn(1).setCellRenderer(new CellRenderer("texto"));
+        T_Bank.getColumnModel().getColumn(2).setCellRenderer(new CellRenderer("numerico"));
+        T_Bank.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer("texto"));
+        T_Bank.getColumnModel().getColumn(4).setCellRenderer(new CellRenderer("texto"));
+        T_Bank.getColumnModel().getColumn(5).setCellRenderer(new CellRenderer("texto"));
     }
 
     /**
@@ -76,11 +79,11 @@ public class BankPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id", "Name", "Number", "Account"
+                "Id", "Name", "Number", "Manager", "Address", "Website"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

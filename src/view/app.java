@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.json.JSONException;
@@ -47,6 +48,8 @@ public class app extends javax.swing.JFrame {
     public app() throws FileNotFoundException, JSONException {
         try {
             initComponents();
+            String f = "../ico/ico.png";
+            setIconImage(new ImageIcon(getClass().getResource(f)).getImage());
             this.setExtendedState(JFrame.MAXIMIZED_BOTH);
             new explode(appPl, appp).play();
 
@@ -89,6 +92,7 @@ public class app extends javax.swing.JFrame {
         setTitle("FINANCE");
         setBackground(new java.awt.Color(44, 62, 80));
 
+        appPl.setBackground(new java.awt.Color(44, 62, 80));
         appPl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout appPlLayout = new javax.swing.GroupLayout(appPl);

@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -113,7 +114,29 @@ public class CellRenderer extends DefaultTableCellRenderer {
 
                 return this;
             }
+            
+            if (type.equals("date")) {
+                if (focused) {
+                    colorFondo = colorFondoSeleccion;
+                } else {
+                    colorFondo = colorFondoPorDefecto;
+                }
 
+                this.setHorizontalAlignment(JLabel.CENTER);
+                SimpleDateFormat dt1 = new SimpleDateFormat("dd-mm-yyyy");
+                this.setText(dt1.format(value.toString()));
+                this.setForeground((selected) ? Color.BLACK : new Color(32, 117, 32));
+
+                if (row % 2 == 0) {
+                    this.setBackground((selected) ? colorFondo : new Color(241, 241, 241));
+                } else {
+                    this.setBackground((selected) ? colorFondo : Color.white);
+                    return this;
+                }
+
+                return this;
+            }
+            
             return this;
         } catch (Exception e) {
             System.out.println(e.getMessage());

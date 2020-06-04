@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -55,6 +56,8 @@ public final class QuoationForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        String f = "../ico/ico.png";
+        setIconImage(new ImageIcon(getClass().getResource(f)).getImage());
         m_QF = (DefaultTableModel) T_QF.getModel();
         JTextField tf = ((JSpinner.DefaultEditor) spin.getEditor()).getTextField();
         tf.setBackground(new Color(44, 62, 80));
@@ -161,6 +164,7 @@ public final class QuoationForm extends javax.swing.JDialog {
         TF_T1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Register Quotation");
         setBackground(new java.awt.Color(44, 62, 80));
 
         jPanel1.setBackground(new java.awt.Color(44, 62, 80));

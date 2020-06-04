@@ -5,10 +5,12 @@
  */
 package view;
 
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.json.JSONException;
 import utils.Login_util;
@@ -29,6 +31,8 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        String f = "../ico/ico.png";
+        setIconImage(new ImageIcon(getClass().getResource(f)).getImage());
     }
 
     /**

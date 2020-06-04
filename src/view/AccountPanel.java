@@ -37,9 +37,12 @@ public class AccountPanel extends javax.swing.JPanel {
         h.setDefaultRenderer(new HeaderRenderer());
         T_Account.setTableHeader(h);
 
-        for (int i = 0; i < T_Account.getColumnCount(); i++) {
-            T_Account.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
-        }
+        T_Account.getColumnModel().getColumn(0).setCellRenderer(new CellRenderer("numerico"));
+        T_Account.getColumnModel().getColumn(1).setCellRenderer(new CellRenderer("texto"));
+        T_Account.getColumnModel().getColumn(2).setCellRenderer(new CellRenderer("currency"));
+        T_Account.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer("texto"));
+        T_Account.getColumnModel().getColumn(4).setCellRenderer(new CellRenderer("texto"));
+        T_Account.getColumnModel().getColumn(5).setCellRenderer(new CellRenderer("texto"));
     }
 
     /**

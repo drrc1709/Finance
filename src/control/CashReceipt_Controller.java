@@ -37,8 +37,8 @@ public class CashReceipt_Controller {
         Object[] o = new Object[6];
         o[0] = crc.getIdReceipt();
         o[1] = crc.getDate();
-        o[2] = crc.getC().getName();
-        o[3] = crc.getA().getOwner();
+        o[2] = crc.getC();
+        o[3] = crc.getA();
         o[4] = crc.getValue();
         o[5] = crc.getConcept();
         

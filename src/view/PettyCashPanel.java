@@ -36,9 +36,12 @@ public class PettyCashPanel extends javax.swing.JPanel {
         h.setDefaultRenderer(new HeaderRenderer());
         Table_Disbursement.setTableHeader(h);
         
-        for (int i = 0; i < Table_Disbursement.getColumnCount(); i++) {
-            Table_Disbursement.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
-        }
+        Table_Disbursement.getColumnModel().getColumn(0).setCellRenderer(new CellRenderer("numerico"));
+        Table_Disbursement.getColumnModel().getColumn(1).setCellRenderer(new CellRenderer("texto"));
+        Table_Disbursement.getColumnModel().getColumn(2).setCellRenderer(new CellRenderer("texto"));
+        Table_Disbursement.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer("numerico"));
+        Table_Disbursement.getColumnModel().getColumn(4).setCellRenderer(new CellRenderer("texto"));
+        Table_Disbursement.getColumnModel().getColumn(5).setCellRenderer(new CellRenderer("texto"));
     }
 
     /**
@@ -295,7 +298,7 @@ public class PettyCashPanel extends javax.swing.JPanel {
             p.setName(tF_Provider.getText().trim());
             String concept = tF_Concept.getText();
             int no = Integer.parseInt(tF_No.getText());
-            long value = Integer.parseInt(tF_Value.getText());
+            int value = Integer.parseInt(tF_Value.getText());
             Date date = jDate.getDate();
 
             dvc.Register_DisbursementVoucher(no, date, p, a, value, concept);

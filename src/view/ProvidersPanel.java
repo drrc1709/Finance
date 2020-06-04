@@ -30,9 +30,12 @@ public class ProvidersPanel extends javax.swing.JPanel {
         h.setDefaultRenderer(new HeaderRenderer());
         T_Providers.setTableHeader(h);
 
-        for (int i = 0; i < T_Providers.getColumnCount(); i++) {
-            T_Providers.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer("texto"));
-        }
+        T_Providers.getColumnModel().getColumn(0).setCellRenderer(new CellRenderer("numerico"));
+        T_Providers.getColumnModel().getColumn(1).setCellRenderer(new CellRenderer("texto"));
+        T_Providers.getColumnModel().getColumn(2).setCellRenderer(new CellRenderer("texto"));
+        T_Providers.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer("numerico"));
+        T_Providers.getColumnModel().getColumn(4).setCellRenderer(new CellRenderer("texto"));
+        T_Providers.getColumnModel().getColumn(5).setCellRenderer(new CellRenderer("texto"));
     }
 
     /**

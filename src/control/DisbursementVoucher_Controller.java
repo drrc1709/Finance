@@ -21,7 +21,7 @@ public class DisbursementVoucher_Controller {
     private final PettyCashVoucher dv = new PettyCashVoucher();
     private final paneColor pc = new paneColor();
 
-    public void Register_DisbursementVoucher(int idReceipt, Date date, Provider p, Account a, long value, String concept) {
+    public void Register_DisbursementVoucher(int idReceipt, Date date, Provider p, Account a, int value, String concept) {
         dv.setIdReceipt(idReceipt);
         dv.setDate(date);
         dv.setP(p);
@@ -36,11 +36,11 @@ public class DisbursementVoucher_Controller {
         Object[] o = new Object[6];
         o[0] = dv.getIdReceipt();
         o[1] = dv.getDate();
-        o[2] = dv.getP().getName();
+        o[2] = dv.getP();
         o[3] = dv.getA().getNumberAccount();
         o[4] = dv.getValue();
         o[5] = dv.getConcept();
-
+        
         return o;
     }
 }
