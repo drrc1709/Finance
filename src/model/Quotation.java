@@ -56,7 +56,5 @@ public class Quotation {
 
     public void setP(int p) {
         this.p = p;
-    }
-    
-    
+    }   
 }

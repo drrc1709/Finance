@@ -6,7 +6,6 @@
 package view;
 
 import control.Account_Controller;
-import java.awt.Color;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -60,7 +59,6 @@ public class AccountPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         tF_Bank = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        tf_Balance = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
@@ -68,6 +66,7 @@ public class AccountPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         rB_Savings = new javax.swing.JRadioButton();
         rB_Current = new javax.swing.JRadioButton();
+        tf_Balance = new javax.swing.JTextField();
         Save = new javax.swing.JButton();
         Clear = new javax.swing.JButton();
         Cancel = new javax.swing.JButton();
@@ -104,11 +103,6 @@ public class AccountPanel extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Balance");
 
-        tf_Balance.setBackground(new java.awt.Color(44, 62, 80));
-        tf_Balance.setForeground(new java.awt.Color(255, 255, 255));
-        tf_Balance.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
-        tf_Balance.setCaretColor(new java.awt.Color(255, 255, 255));
-
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Creation Date");
 
@@ -138,6 +132,10 @@ public class AccountPanel extends javax.swing.JPanel {
         rB_Current.setText("Current");
         rB_Current.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        tf_Balance.setBackground(new java.awt.Color(44, 62, 80));
+        tf_Balance.setForeground(new java.awt.Color(255, 255, 255));
+        tf_Balance.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -162,7 +160,7 @@ public class AccountPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_Balance, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tf_Balance, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(tF_Owner, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)

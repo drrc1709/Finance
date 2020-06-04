@@ -33,7 +33,7 @@ public class Quotation_Controller {
         o[1] =q.getC();
         o[2] =q.getP();
         o[3] =q.getT();
-
+        
         return o;
     }
 

@@ -68,9 +68,8 @@ public class CashReceiptPanel extends javax.swing.JPanel {
         tF_Account = new javax.swing.JTextField();
         tF_Concept = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tF_Sum = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
         jDate = new com.toedter.calendar.JDateChooser();
+        tF_Sum = new javax.swing.JTextField();
         B_Save = new javax.swing.JButton();
         B_Clear = new javax.swing.JButton();
         B_Cancel = new javax.swing.JButton();
@@ -147,15 +146,12 @@ public class CashReceiptPanel extends javax.swing.JPanel {
         tF_Concept.setCaretColor(new java.awt.Color(255, 255, 255));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Sum");
+        jLabel6.setText("Sum    $");
 
         tF_Sum.setBackground(new java.awt.Color(44, 62, 80));
         tF_Sum.setForeground(new java.awt.Color(255, 255, 255));
         tF_Sum.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createEmptyBorder(0, 3, 1, 0)));
         tF_Sum.setCaretColor(new java.awt.Color(255, 255, 255));
-
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("$");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -175,17 +171,15 @@ public class CashReceiptPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tF_Customer))
+                        .addComponent(tF_Customer, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(7, 7, 7)
                         .addComponent(tF_Account, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(tF_Sum, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tF_Sum))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(10, 10, 10)
@@ -212,9 +206,8 @@ public class CashReceiptPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tF_Account, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tF_Sum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(tF_Sum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -334,7 +327,6 @@ public class CashReceiptPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_B_ClearActionPerformed
 
     private void B_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CancelActionPerformed
-        //new explode(this, appp).play();
         this.setVisible(false);
     }//GEN-LAST:event_B_CancelActionPerformed
 
@@ -346,7 +338,6 @@ public class CashReceiptPanel extends javax.swing.JPanel {
     private javax.swing.JTable TableCashReceipts;
     private com.toedter.calendar.JDateChooser jDate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

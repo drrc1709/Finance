@@ -25,13 +25,13 @@ public class CustomUI extends BasicComboBoxUI{
 
    @Override
      protected JButton createArrowButton() {        
-        BasicArrowButton basicArrowButton = new BasicArrowButton(BasicArrowButton.SOUTH, //Direccion de la flecha
-                Color.WHITE, //Color de fondo
-                new Color(130, 7, 7),//sombra
-                new Color(130, 7, 7),//darkShadow
-                Color.WHITE //highlight
+        BasicArrowButton basicArrowButton = new BasicArrowButton(BasicArrowButton.SOUTH,
+                Color.WHITE,
+                new Color(130, 7, 7),
+                new Color(130, 7, 7),
+                Color.WHITE
                 );         
-        //se quita el efecto 3d del boton, sombra y darkShadow no se aplican 
+        
         basicArrowButton.setBorder(BorderFactory.createLineBorder(Color.white,2));
         basicArrowButton.setContentAreaFilled(false);        
         return basicArrowButton;

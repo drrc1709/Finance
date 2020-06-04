@@ -10,13 +10,13 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import org.json.JSONException;
 import utils.explode;
+import utils.paneColor;
 
 /**
  *
@@ -33,9 +33,10 @@ public class app extends javax.swing.JFrame {
     private final CustomersPanel cp = new CustomersPanel();
     private final ProvidersPanel pp = new ProvidersPanel();
     private final appPanel appp = new appPanel();
+    private final RoutePanel rp = new RoutePanel();
+    private final paneColor pc = new paneColor();
     private Quotation q = null;
     private Glosary g = null;
-    private final RoutePanel rp = new RoutePanel();
 
     /**
      * Creates new form app
@@ -337,6 +338,7 @@ public class app extends javax.swing.JFrame {
             File path = new File(f);
             Desktop.getDesktop().open(path);
         } catch (IOException ex) {
+            pc.getPanel(rootPane, "Don´t found file EstimateOK_LICOR.pdf", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jMI_QuotationActionPerformed
 
@@ -345,21 +347,23 @@ public class app extends javax.swing.JFrame {
     }//GEN-LAST:event_MInvoiceActionPerformed
 
     private void Mi_DescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mi_DescriptionActionPerformed
-       try {
+        try {
             String f = "src/files/DESCRIPCIÓN_REDES.pdf";
             File path = new File(f);
             Desktop.getDesktop().open(path);
         } catch (IOException ex) {
-        } // TODO add your handling code here:
+            pc.getPanel(rootPane, "Don´t found file DESCRIPCIÓN_REDES.pdf", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_Mi_DescriptionActionPerformed
 
     private void Mi_BlueprintsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mi_BlueprintsActionPerformed
-        
+
         try {
             String f = "src/files/PLANOS.pdf";
             File path = new File(f);
             Desktop.getDesktop().open(path);
         } catch (IOException ex) {
+            pc.getPanel(rootPane, "Don´t found file PLANOS.pdf", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_Mi_BlueprintsActionPerformed
 

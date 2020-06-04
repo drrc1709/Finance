@@ -9,7 +9,6 @@ import control.Quotation_Controller;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import org.json.JSONException;
 import utils.CellRenderer;
@@ -43,16 +42,10 @@ public class Quotation extends javax.swing.JPanel {
             T_Quotation.getColumnModel().getColumn(3).setCellRenderer(new CellRenderer("currency"));
             
             qf = new QuoationForm(null, true);
+            qf.setQ(this);
         } catch (IOException | JSONException e) {
             Logger.getLogger(app.class.getName()).log(Level.SEVERE, null, e);
         }
-    }
-
-    public void updatTable() {
-        DefaultTableModel mQuotation = (DefaultTableModel) T_Quotation.getModel();
-        mQuotation.addRow((Object[]) qc.loadQuotation());
-        T_Quotation.setModel(mQuotation);
-        
     }
 
     /**

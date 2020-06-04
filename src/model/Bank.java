@@ -61,8 +61,6 @@ public class Bank {
     public void setWebSite(String webSite) {
         this.webSite = webSite;
     }
-    
-    
 
     public int getId() {
         return id;

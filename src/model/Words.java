@@ -38,7 +38,6 @@ public class Words {
         this.meaning = meaning;
     }
     
-    
    @Override
     public String toString(){
      return this.getWord();

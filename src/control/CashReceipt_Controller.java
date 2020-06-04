@@ -18,8 +18,8 @@ import utils.paneColor;
  */
 public class CashReceipt_Controller {
 
-    private CashRegisterReceipt crc = new CashRegisterReceipt();
-    private paneColor pc = new paneColor();
+    private final CashRegisterReceipt crc = new CashRegisterReceipt();
+    private final paneColor pc = new paneColor();
 
     public void CashRegisterReceipts(int idReceipt, Date date, Customer c, Account a, long value, String concept) {
         crc.setIdReceipt(idReceipt);

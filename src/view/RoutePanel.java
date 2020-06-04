@@ -8,12 +8,15 @@ package view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import javax.swing.JOptionPane;
+import utils.paneColor;
 
 /**
  *
  * @author Daniel
  */
 public class RoutePanel extends javax.swing.JPanel {
+    private final paneColor pc = new paneColor();
 
     /**
      * Creates new form RoutePanel
@@ -66,8 +69,8 @@ public class RoutePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(160, 160, 160)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(143, 143, 143))
+                .addComponent(jButton1)
+                .addContainerGap(143, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -89,7 +92,6 @@ public class RoutePanel extends javax.swing.JPanel {
         jTextArea1.setText(null);
         try {
 
-            //String command = "C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe  route print";
             String command = "route print";
             Process powerShellProcess = Runtime.getRuntime().exec(command);
 
@@ -98,20 +100,14 @@ public class RoutePanel extends javax.swing.JPanel {
 
             while ((s = stdInput.readLine()) != null) {
                 jTextArea1.append(s + "\n");
-                System.out.println(s);
             }
-
             while ((s = stdError.readLine()) != null) {
-                System.out.println(s);
-                jTextArea1.setText(s);
+                jTextArea1.append(s + "\n");
             }
-
-
         } catch (IOException e) {
-            System.out.println("exception happened - here's what I know: \n"+e.getMessage());
+            pc.getPanel(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

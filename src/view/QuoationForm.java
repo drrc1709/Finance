@@ -40,6 +40,8 @@ public final class QuoationForm extends javax.swing.JDialog {
     private final Product_Controller pc = new Product_Controller();
     private final paneColor pco = new paneColor();
     private final DefaultTableModel m_QF;
+    private final Quotation_Controller qc = new Quotation_Controller();
+    private Quotation Q;
 
     /**
      * Creates new form QuoationForm
@@ -102,6 +104,10 @@ public final class QuoationForm extends javax.swing.JDialog {
         JSONObject myResponse = new JSONObject(response.toString());
         array = myResponse.getJSONArray("products");
         return array;
+    }
+    
+    public void setQ(Quotation quotation) {
+        this.Q = quotation;
     }
 
     public int totalSum() {
@@ -538,12 +544,10 @@ public final class QuoationForm extends javax.swing.JDialog {
             c.setAddress(address);
             c.setEmail(mail);
 
-            Quotation_Controller qc = new Quotation_Controller();
             qc.registerQuotation(no, c, t, p);
 
-            Quotation q = new Quotation();
-            q.updatTable();
-            
+            this.updatTable();
+
             tF_No.setText(null);
             TF_UP.setText(null);
             TF_UP.setValue(null);
@@ -553,7 +557,7 @@ public final class QuoationForm extends javax.swing.JDialog {
             TF_T.setText(null);
             TF_T.setValue(null);
             TF_T1.setText(null);
-        TF_T1.setValue(null);
+            TF_T1.setValue(null);
             tF_Address.setText(null);
             tF_Id.setText(null);
             tF_Phone.setText(null);
@@ -563,10 +567,14 @@ public final class QuoationForm extends javax.swing.JDialog {
             this.dispose();
         } catch (NumberFormatException e) {
             pco.getPanel(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (JSONException | IOException ex) {
-            Logger.getLogger(QuoationForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_SaveActionPerformed
+
+    public void updatTable() {
+        DefaultTableModel mQuotation = (DefaultTableModel) Q.T_Quotation.getModel();
+        mQuotation.addRow((Object[]) qc.loadQuotation());
+        Q.T_Quotation.setModel(mQuotation);
+    }
 
     private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
         tF_No.setText(null);
@@ -616,7 +624,6 @@ public final class QuoationForm extends javax.swing.JDialog {
 
             pc.register(product, unitPrice, cant, total);
 
-            
             m_QF.addRow((Object[]) pc.show());
             T_QF.setModel(m_QF);
             TF_T1.setValue(totalSum());
@@ -634,11 +641,11 @@ public final class QuoationForm extends javax.swing.JDialog {
     }//GEN-LAST:event_B_AddActionPerformed
 
     private void B_RemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_RemoveActionPerformed
-        DefaultTableModel m_QF = (DefaultTableModel) T_QF.getModel();
+        DefaultTableModel model_QF = (DefaultTableModel) T_QF.getModel();
         if (T_QF.getSelectedRow() < 0) {
             pco.getPanel(rootPane, "Please, Select a row to remove", "Information", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            m_QF.removeRow(T_QF.getSelectedRow());
+            model_QF.removeRow(T_QF.getSelectedRow());
             TF_T1.setValue(totalSum());
         }
     }//GEN-LAST:event_B_RemoveActionPerformed
